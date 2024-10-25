@@ -1,0 +1,30 @@
+@import 'colors';
+
+footer {
+  a {
+    color: $white;
+    text-align: right;
+  }
+  background-color: $blue;
+  color: $white;
+  display: flex;
+  flex-direction: row;
+  font-size: 1rem;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 0.5rem;
+  .favourites-link {
+    margin-right: 2rem;
+    a {
+      align-items: end;
+      display: flex;
+      img {
+        margin-right: 5px;
+        width: 30px;
+      }
+    }
+  }
+  .logo {
+    width: 100px;
+  }
+}

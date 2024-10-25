@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css?family=Inter);
+@import 'colors';
+
+:root {
+  background-color: $background-color;
+  color: $text-color;
+  color-scheme: light dark;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  height: 100vh;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-weight: 400;
+
+  a {
+    color: $accent-color;
+    font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: dotted underline;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.body {
+  background-color: $secondary-color;
+  display: grid;
+  grid-area: body;
+  grid-template-rows: repeat(3, 1fr);
+  height: 90vh;
+  padding: 20px;
+}
+
+.content {
+  background-color: $content-background-color;
+  border: 1px solid $border-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  background-color: $footer-background-color;
+  color: white;
+  grid-area: footer;
+  padding: 10px;
+  text-align: center;
+}
+
+.header {
+  background-color: $primary-color;
+  color: white;
+  grid-area: header;
+  padding: 20px;
+  text-align: center;
+}
