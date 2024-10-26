@@ -11,7 +11,7 @@
   justify-content: center;
   flex-wrap: wrap;
   min-height: 300px;
-  padding: 0 1rem 1rem;
+  padding: 0 1rem 1rem 10px;
   width: 100%;
   
   ul li {
@@ -24,8 +24,8 @@
     width: 50%;
 
     figure.addWishlist {
-      font-family: "Limelight", Arial, sans-serif;
-      color: $text-color;
+
+      color: $black;
       margin: 0;
       position: relative;
       overflow: hidden;
@@ -78,7 +78,7 @@
       }
 
       h2 {
-        color: $background-color;
+        color: $black;
         word-spacing: -0.15em;
         font-weight: 300;
         margin-top: 20%;
@@ -139,6 +139,15 @@
       justify-content: end;
       position: relative;
       top: -25px;
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 10px;
+        svg {
+          margin-right: 5px;
+        }
+      }
     }
   }
 
@@ -148,6 +157,13 @@
     padding-left: 1rem;
     padding-right: 0.5rem;
     width: 46%;
+
+    h3 {
+      font-weight: bold;
+      font-size: 2rem;
+      padding: 0;
+      margin: 10px 0 0 0;  
+    }
 
     &.movie-top_rated {
       color: $primary-color;
@@ -168,7 +184,7 @@
     }
 
     &.movie-upcoming {
-      color: $hover-color;
+      color: $color-upcoming;
       font-family: Roboto Condensed, sans-serif;
       h3 {
         color: $black;
@@ -198,7 +214,7 @@
     }
 
     &.movie-upcoming {
-      color: $hover-color;
+      color: $color-upcoming;
       font-family: Roboto Condensed, sans-serif;
     }
 

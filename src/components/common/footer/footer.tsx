@@ -7,9 +7,7 @@ import "@styles/footer.scss";
 const Footer: React.FC = () => {
   return (
     <footer>
-      <a href="https://www.mytheresa.com" title="MyTheresa">
-        <img src={Logo} className="logo" />
-      </a>
+      <p>@ copyright 2024 MyTheresa developed by <a href="https://github.com/pachibadilla">pachibadilla</a></p>
     </footer>
   );
 };

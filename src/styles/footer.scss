@@ -3,7 +3,7 @@
 footer {
   align-content: flex-end;
   background-color: $background-color-footer;
-  color: $white;
+  color: $black;
   display: flex;
   flex-direction: row;
   font-size: 1rem;
@@ -12,9 +12,9 @@ footer {
   padding: 0.5rem;
   text-align: right;
 
-  a {
-    color: $white;
+  p {
     text-align: right;
+    width: 100%;
   }
 
   .logo {
