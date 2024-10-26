@@ -38,8 +38,8 @@ interface MovieType {
 }
 
 interface MovieProps {
-  idMovie: string;
-  type: string;
+  idMovie?: string;
+  type?: string;
 }
 
 const Movie: React.FC<MovieProps> = () => {

@@ -1,9 +1,10 @@
+@use './colors';
+
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker:400);
 @import url(https://fonts.googleapis.com/css?family=Orbitron:400italic);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);
 @import url(https://fonts.googleapis.com/css2?family=Limelight);
 @import url(https://fonts.googleapis.com/css2?family=Orbitron);
-@import 'colors';
 
 .movieWrapper {
   display: flex;
@@ -25,7 +26,7 @@
 
     figure.addWishlist {
 
-      color: $black;
+      color: colors.$black;
       margin: 0;
       position: relative;
       overflow: hidden;
@@ -38,16 +39,17 @@
       }
 
       img {
-        opacity: 1;
+        border-radius: 4px;
         margin-top: 20px;
         max-height: 250px;
-        width: 100%;
+        opacity: 1;
         transition: opacity 0.5s;
+        width: 100%;
       }
 
       figcaption {
         position: absolute;
-        bottom: 25px;
+        bottom: 12px;
         left: 0;
         padding: 2rem;
         width: 100%;
@@ -63,7 +65,7 @@
           border-bottom: 1px solid rgba(255, 255, 255, 0.8);
           content: "";
           opacity: 0;
-          background-color: $content-background-color;
+          background-color: colors.$content-background;
           transition: all 0.4s;
           transition-delay: 0.6s;
         }
@@ -78,7 +80,7 @@
       }
 
       h2 {
-        color: $black;
+        color: colors.$black;
         word-spacing: -0.15em;
         font-weight: 300;
         margin-top: 20%;
@@ -102,7 +104,7 @@
         top: 0;
         bottom: 0;
         position: absolute;
-        color: $text-color;
+        color: colors.$text;
       }
 
       &:hover {
@@ -166,28 +168,28 @@
     }
 
     &.movie-top_rated {
-      color: $primary-color;
+      color: colors.$primary;
       font-family: Limelight, sans-serif;
       h3 {
-        color: $black;
+        color: colors.$black;
         font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       }
     }
 
     &.movie-popular {
-      color: $accent-color;
+      color: colors.$accent;
       font-family: Orbitron, serif;
       h3 {
-        color: $black;
+        color: colors.$black;
         font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       }
     }
 
     &.movie-upcoming {
-      color: $color-upcoming;
+      color: colors.$color-upcoming;
       font-family: Roboto Condensed, sans-serif;
       h3 {
-        color: $black;
+        color: colors.$black;
         font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       }
     }
@@ -204,22 +206,22 @@
     }
 
     &.movie-top_rated {
-      color: $primary-color;
+      color: colors.$primary;
       font-family: Limelight, sans-serif;
     }
 
     &.movie-popular {
-      color: $accent-color;
+      color: colors.$accent;
       font-family: Orbitron, serif;
     }
 
     &.movie-upcoming {
-      color: $color-upcoming;
+      color: colors.$color-upcoming;
       font-family: Roboto Condensed, sans-serif;
     }
 
     &-title {
-      color: $black;
+      color: colors.$black;
       font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       margin-right: 5px;      
     }

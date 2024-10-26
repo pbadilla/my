@@ -7,3 +7,8 @@ export interface Movie {
 export interface MovieApiResponse {
   results: Movie[];
 }
+
+export interface MyType {
+  id: number;
+  name: string;
+}

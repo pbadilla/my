@@ -1,34 +1,42 @@
-@import 'colors';
+@use './colors';
 
 header {
   a {
-    color: $black;
+    color: colors.$black;
     text-align: right;
     &:hover {
-      color: $hover-color;
+      color: colors.$hover;
     }
   }
-  background-color: white;
-  border-bottom: 1px solid $background-color-footer;
-  color: $black;
+
+  position: relative;
   display: flex;
-  flex-direction: row;
-  font-size: 1rem;
-  font-weight: bold;
+  background: white;
+  padding: 0 23px;
+  height: 55px;
+  align-items: center;
   justify-content: space-between;
-  padding: 0.5rem;
+  border-bottom: 1px solid colors.$background-footer;
+
   .logo {
+    align-items: center;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
     width: 150px;
     svg {
       width: 100%;
       height: auto;
       &:hover {
-        fill: $hover-color;
+        fill: colors.$hover;
       }
     }
   }
   .favourites-link {
     margin-right: 2rem;
+    display: flex;
+    position: absolute;
+    right: 0;
     a {
       align-items: end;
       display: flex;

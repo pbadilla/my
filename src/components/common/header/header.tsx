@@ -9,7 +9,11 @@ import '@styles/Header.scss';
 const Header: React.FC = () => {
   return (
     <header>
-      <div className="logo"><LogoMytheresa /></div>
+      <div className="logo">
+      <Link to="https://www.mytheresa.com" title="myTheresa website" target="_blank">
+        <LogoMytheresa />
+      </Link>
+      </div>
 
       <div className="favourites-link">
         <Link to="/wishlist" title="Wishlist">

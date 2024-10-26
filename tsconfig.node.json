@@ -1,10 +1,28 @@
 {
   "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@images/*": ["src/assets/images/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@store/*": ["src/store/*"],
+      "@styles/*": ["src/styles/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"]
+    },
     "composite": true,
-    "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "jsx": "react-jsx"
   },
-  "include": ["vite.config.ts"]
+  "include": ["server.ts", "src/**/*"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.test.tsx"]
 }

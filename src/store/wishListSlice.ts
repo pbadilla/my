@@ -7,7 +7,7 @@ interface Movie {
   backdrop_path: string;
 }
 
-interface WishlistState {
+export interface WishlistState {
   movies: Movie[];
 }
 
@@ -15,7 +15,7 @@ const initialWishlistState: WishlistState = {
   movies: [],
 };
 
-const customId = "whislitlist-toast";
+const customId = "wishlist-toast";
 
 const wishlistSlice = createSlice({
   name: 'wishlist',
@@ -38,7 +38,7 @@ const wishlistSlice = createSlice({
     },
     removeMovieFromWishlist: (state, action: PayloadAction<string>) => {
       state.movies = state.movies.filter(movie => movie.original_title !== action.payload);
-      toast.success(`${action.payload} removed from wishlist.`,{
+      toast.success(`${action.payload} removed from wishlist.`, {
         position: "bottom-center",
         toastId: customId,
         transition: Zoom,
@@ -49,5 +49,4 @@ const wishlistSlice = createSlice({
 });
 
 export const { addMovieToWishlist, removeMovieFromWishlist } = wishlistSlice.actions;
-
 export default wishlistSlice.reducer;

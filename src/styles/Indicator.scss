@@ -1,7 +1,7 @@
-@import 'colors';
+@use './colors';
 
 .indicator {
-  background-color: $black;
+  background-color: colors.$black;
   cursor: pointer;
   display: block;
   height: 3px;

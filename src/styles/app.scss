@@ -1,9 +1,11 @@
+
+@use './colors';
 @import url(https://fonts.googleapis.com/css?family=Jost);
-@import 'colors';
+
 
 :root {
-  background-color: $background-color;
-  color: $text-color;
+  background-color: colors.$background;
+  color: colors.$text;
   color-scheme: light dark;
   font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -20,13 +22,13 @@ body {
 
 
   a {
-    color: $black;
+    color: colors.$black;
     font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
     &:hover {
-      color: $hover-color;
+      color: colors.$hover;
       text-decoration: dotted underline;
     }
   }
@@ -46,7 +48,7 @@ body {
 }
 
 .body {
-  background-color: $white;
+  background-color: colors.$white;
   display: grid;
   grid-area: body;
   grid-template-rows: repeat(3, 1fr);
@@ -65,7 +67,7 @@ body {
 }
 
 .footer {
-  background-color: $footer-background-color;
+  background-color: colors.$footer-background;
   color: white;
   grid-area: footer;
   padding: 10px;
@@ -73,7 +75,7 @@ body {
 }
 
 .header {
-  background-color: $primary-color;
+  background-color: colors.$primary;
   color: white;
   grid-area: header;
   padding: 20px;
