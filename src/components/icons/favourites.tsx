@@ -1,12 +1,5 @@
 import React from 'react';
 
-// interface IconProps {
-//   name: string;  // Name of the icon (could be an SVG ID or a font class name)
-//   size?: number; // Size of the icon in pixels
-//   color?: string; // Color of the icon
-//   className?: string; // Any additional classes
-// }
-
 const Favourites: React.FC = () => {
   return (
     <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  

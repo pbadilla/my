@@ -4,6 +4,9 @@ header {
   a {
     color: $black;
     text-align: right;
+    &:hover {
+      color: $hover-color;
+    }
   }
   background-color: white;
   border-bottom: 1px solid $background-color-footer;
@@ -19,6 +22,9 @@ header {
     svg {
       width: 100%;
       height: auto;
+      &:hover {
+        fill: $hover-color;
+      }
     }
   }
   .favourites-link {

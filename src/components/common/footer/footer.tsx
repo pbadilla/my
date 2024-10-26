@@ -7,7 +7,7 @@ import "@styles/footer.scss";
 const Footer: React.FC = () => {
   return (
     <footer>
-      <p>@ copyright 2024 MyTheresa developed by <a href="https://github.com/pachibadilla">pachibadilla</a></p>
+      <p>@ copyright 2024 myTheresa developed by <a href="https://github.com/pachibadilla">pachibadilla</a></p>
     </footer>
   );
 };

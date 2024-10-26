@@ -10,7 +10,7 @@ import { addMovieToWishlist } from '@store/wishListSlice';
 import Buttonback from "@components/common/buttons/button_back/ButtonBack";
 import LazyImage from "@components/image";
 import Layout from "@components/layout";
-import movie from "@images/movie.png";
+
 import FavouritesNew from "@components/icons/love";
 
 import "@styles/movie.scss";
@@ -48,15 +48,14 @@ const Movie: React.FC<MovieProps> = () => {
 
   const dispatch = useDispatch();
 
-  const url = `https://api.themoviedb.org/3/movie/${idMovie}?api_key=7006edd4690fd5f45e7b5cb6b1561357&language=en-US`;
-
   // Access the global state for API data
+  const url = `https://api.themoviedb.org/3/movie/${idMovie}?api_key=7006edd4690fd5f45e7b5cb6b1561357&language=en-US`;
   const { isLoading, apiData: movies, serverError } = useFetchData<MovieType>(url)
 
 
-  function addWishList(e: React.MouseEvent, movieName: string) {
+  function addWishList(e: React.MouseEvent, movie: { original_title: string; backdrop_path: string }) {
     e.preventDefault();
-    dispatch(addMovieToWishlist(movieName));
+    dispatch(addMovieToWishlist(movie));
   }
 
   return (
@@ -77,7 +76,8 @@ const Movie: React.FC<MovieProps> = () => {
                   <h2>Add to my Wishlist</h2>
                   <a
                     href="#"
-                    onClick={(e) => addWishList(e, movies.original_title)}
+                    onClick={(e) => addWishList(e, { original_title: movies.original_title, backdrop_path: movies.backdrop_path })}
+
                   ></a>
                 </figcaption>
               </figure>
@@ -86,7 +86,7 @@ const Movie: React.FC<MovieProps> = () => {
                   <Original />
                   Movie's original link
                 </a>
-                <a href="#" onClick={(e) =>addWishList(e,movies.original_title)}>
+                <a href="#" onClick={(e) =>addWishList(e,movies)}>
                   <FavouritesNew />
                   Add to my wishlist
                 </a>

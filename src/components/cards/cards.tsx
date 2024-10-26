@@ -26,6 +26,7 @@ const Card: React.FC<CardProps> = ({ kindMovie, movie }) => {
         <Image
           src={`http://image.tmdb.org/t/p/w185/${movie.backdrop_path}`}
           alt={movie.title}
+          isMovie={true}
         />
         <small className="slide-content">{movie.original_title}</small>
       </div>

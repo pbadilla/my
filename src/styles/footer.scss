@@ -12,6 +12,10 @@ footer {
   padding: 0.5rem;
   text-align: right;
 
+  a {
+    color: $dark-gray; 
+  }
+
   p {
     text-align: right;
     width: 100%;

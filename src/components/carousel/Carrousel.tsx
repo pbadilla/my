@@ -14,7 +14,6 @@ import '@styles/Carousel.scss';
 const Carrousel: React.FC<CarrouselProps> = ({ type }) => {
 
   const url = `https://api.themoviedb.org/3/movie/${type}?api_key=7006edd4690fd5f45e7b5cb6b1561357&language=en-US`;
-
   const { isLoading, apiData: movies, serverError } = useFetchData<MovieApiResponse>(url);
 
   const settings = {

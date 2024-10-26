@@ -11,9 +11,10 @@ const placeHolder =
 interface LazyImageProps {
   src: string;
   alt?: string;
+  isMovie?: boolean;
 }
 
-const Image: React.FC<LazyImageProps> = ({ src, alt }) => {
+const Image: React.FC<LazyImageProps> = ({ src, alt, isMovie }) => {
   const [imageSrc, setImageSrc] = useState<string>(placeHolder);
   const [imageRef, setImageRef] = useState<HTMLImageElement | null>(null);
 
@@ -64,7 +65,7 @@ const Image: React.FC<LazyImageProps> = ({ src, alt }) => {
 
   return (
     <img
-      className="lazyImage"
+      className={`lazyImage ${isMovie ? "movie-image" : ""}`}
       ref={setImageRef}
       src={imageSrc}
       alt={alt}

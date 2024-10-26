@@ -1,30 +1,49 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+interface Movie {
+  original_title: string;
+  backdrop_path: string;
+}
+
 interface WishlistState {
-  movies: string[];
+  movies: Movie[];
 }
 
 const initialWishlistState: WishlistState = {
   movies: [],
 };
 
+const customId = "whislitlist-toast";
+
 const wishlistSlice = createSlice({
   name: 'wishlist',
   initialState: initialWishlistState,
   reducers: {
-    addMovieToWishlist: (state, action: PayloadAction<string>) => {
-      if (!state.movies.includes(action.payload)) {
+    addMovieToWishlist: (state, action: PayloadAction<Movie>) => {
+      const movieExists = state.movies.some(movie => movie.original_title === action.payload.original_title);
+
+      if (!movieExists) {
         state.movies.push(action.payload);
-        toast.success(`${action.payload} added to wishlist!`);
+        toast.success(`${action.payload.original_title} added to wishlist!`, {
+          position: "bottom-center",
+          toastId: customId,
+          transition: Zoom,
+          autoClose: 500,
+        });
       } else {
-        toast.info(`${action.payload} is already in your wishlist.`);
+        toast.info(`${action.payload.original_title} is already in your wishlist.`);
       }
     },
     removeMovieFromWishlist: (state, action: PayloadAction<string>) => {
-      state.movies = state.movies.filter(movie => movie !== action.payload);
-      toast.success(`${action.payload} removed from wishlist.`);
+      state.movies = state.movies.filter(movie => movie.original_title !== action.payload);
+      toast.success(`${action.payload} removed from wishlist.`,{
+        position: "bottom-center",
+        toastId: customId,
+        transition: Zoom,
+        autoClose: 500,
+      });
     },
   },
 });
