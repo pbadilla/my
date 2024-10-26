@@ -11,8 +11,11 @@ import Buttonback from "@components/common/buttons/button_back/ButtonBack";
 import LazyImage from "@components/image";
 import Layout from "@components/layout";
 import movie from "@images/movie.png";
+import FavouritesNew from "@components/icons/love";
 
 import "@styles/movie.scss";
+import Original from "@components/icons/original";
+
 
 export interface Movie {
   id: number;
@@ -79,9 +82,12 @@ const Movie: React.FC<MovieProps> = () => {
                 </figcaption>
               </figure>
               <div className="addWishlist-bottom-caption">
-                <a href={movies.homepage}>Movie's original link</a>
+                <a href={movies.homepage}>
+                  <Original />
+                  Movie's original link
+                </a>
                 <a href="#" onClick={(e) =>addWishList(e,movies.original_title)}>
-                  <img src={movie} alt="Add to my wishlist" />
+                  <FavouritesNew />
                   Add to my wishlist
                 </a>
             </div>

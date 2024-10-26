@@ -1,4 +1,7 @@
-header,
-footer {
-  padding: 1rem;
+html, body {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
 }

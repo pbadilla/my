@@ -1,11 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Inter);
+@import url(https://fonts.googleapis.com/css?family=Jost);
 @import 'colors';
 
 :root {
   background-color: $background-color;
   color: $text-color;
   color-scheme: light dark;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-synthesis: none;
   line-height: 1.5;
@@ -16,25 +16,18 @@
 }
 
 body {
-  align-items: center;
-  display: flex;
-  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  height: 100vh;
-  line-height: 1.5;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  font-weight: 400;
+  min-height: 100vh;
+
 
   a {
-    color: $accent-color;
-    font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: $black;
+    font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-size: 1rem;
     font-weight: 500;
-    text-decoration: dotted underline;
-
+    text-decoration: none;
     &:hover {
       color: $hover-color;
+      text-decoration: dotted underline;
     }
   }
 }
@@ -53,20 +46,22 @@ body {
 }
 
 .body {
-  background-color: $secondary-color;
+  background-color: $white;
   display: grid;
   grid-area: body;
   grid-template-rows: repeat(3, 1fr);
-  height: 90vh;
+  height: 80vh;
   padding: 20px;
+  place-items: center;
 }
 
 .content {
-  background-color: $content-background-color;
-  border: 1px solid $border-color;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  flex-direction: column;
+  width: 800px;
 }
 
 .footer {

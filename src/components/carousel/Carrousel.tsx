@@ -20,6 +20,7 @@ const Carrousel: React.FC<CarrouselProps> = ({ type }) => {
   const settings = {
     dots: true,
     infinite: true,
+    focusOnSelect: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,

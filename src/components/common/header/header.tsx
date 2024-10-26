@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Favourites from "@components/icons/favourites";
+import FavouritesNew from "@components/icons/love";
+import LogoMytheresa from "@components/icons/logo_mytheresa";
 
 import '@styles/Header.scss';
 
 const Header: React.FC = () => {
   return (
     <header>
-      <div>Movie Slider - MyTheresa</div>
+      <div className="logo"><LogoMytheresa /></div>
 
       <div className="favourites-link">
-        <Link to="/wishlist">
-          <Favourites />
-          <span>Your wishlist!</span>
+        <Link to="/wishlist" title="Wishlist">
+          <FavouritesNew />
         </Link>
       </div>
     </header>

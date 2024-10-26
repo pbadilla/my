@@ -9,9 +9,11 @@ const Home = () => {
         <Header />
 
         <div className="body">
-          <Carrousel type='top_rated' />
-          <Carrousel type='popular' />
-          <Carrousel type='upcoming' />
+          <div className="content">
+            <Carrousel type='top_rated' />
+            <Carrousel type='popular' />
+            <Carrousel type='upcoming' />
+          </div>
         </div>
 
         <Footer />

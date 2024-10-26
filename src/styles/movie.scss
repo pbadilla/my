@@ -153,7 +153,8 @@
       color: $primary-color;
       font-family: Limelight, sans-serif;
       h3 {
-        color: $background-color;
+        color: $black;
+        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       }
     }
 
@@ -161,7 +162,8 @@
       color: $accent-color;
       font-family: Orbitron, serif;
       h3 {
-        color: $background-color;
+        color: $black;
+        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       }
     }
 
@@ -169,7 +171,8 @@
       color: $hover-color;
       font-family: Roboto Condensed, sans-serif;
       h3 {
-        color: $background-color;
+        color: $black;
+        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
       }
     }
   }
@@ -200,8 +203,9 @@
     }
 
     &-title {
-      color: $background-color;
-      margin-right: 5px;
+      color: $black;
+      font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
+      margin-right: 5px;      
     }
   }
 }
