@@ -70,18 +70,18 @@ const Movie: React.FC<MovieProps> = () => {
   }
 
   return (
-    <div className="layout">
+    <div className="layout" data-testid="movie">
       <div className="header">
         <Header />
         <Buttonback page="home" />
       </div>
-      <div className="body body-movie">
+      <div className="body body-movie" data-testid="movie-body">
         <div className="content">
             {isLoading && <p>Loading...</p>}
             {serverError && <p>Error: {serverError}</p>}
             {movies && (
                 <>
-                <div className="container">
+                <div className="container" data-testid="movies-container">
                   <section className="container-column__left">
                     <figure>
                       <LazyImage
@@ -104,12 +104,12 @@ const Movie: React.FC<MovieProps> = () => {
                   </section>
                   <section className={`container-column__right movie movie-${type}`}>
                     <ul className="movie-description">
-                      <li><h3>{movies.original_title}</h3></li>
-                      <li className="movie-description__overview">{movies.overview}</li>
-                      <li className="movie-description__popularity">{movies.popularity}</li>
-                      <li className="movie-description__tagsMovie">{movies.genres[0].name}</li>
+                      <li data-testid="movie-title"><h3>{movies.original_title}</h3></li>
+                      <li data-testid="movie-overview" className="movie-description__overview">{movies.overview}</li>
+                      <li data-testid="movie-popularity" className="movie-description__popularity">{movies.popularity}</li>
+                      <li data-testid="movie-genre" className="movie-description__tagsMovie">{movies.genres[0].name}</li>
                     </ul>
-                    <div className="movie-description__actions">
+                    <div className="movie-description__actions" data-testid="movie-actions">
                         <Button
                           className={`movie-button__${type}`}
                           text="Go to movie's homepage" 
@@ -131,7 +131,7 @@ const Movie: React.FC<MovieProps> = () => {
                         />
                     </div>
                   </section>
-                  <section className={`container-column__footer movie movie-${type}`}>
+                  <section className={`container-column__footer movie movie-${type}`} data-testid="movie-footer">
                     <ul>
                       <li>
                         <h4>Production company:</h4>

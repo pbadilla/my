@@ -8,7 +8,7 @@ import '@styles/Header.scss';
 
 const Header: React.FC = () => {
   return (
-    <header>
+    <header data-tesid="header">
       <div className="logo">
       <Link to="https://www.mytheresa.com" title="myTheresa website" target="_blank">
         <LogoMytheresa />

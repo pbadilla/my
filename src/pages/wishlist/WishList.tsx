@@ -42,24 +42,24 @@ const WishList: React.FC = () => {
   }
 
   return (
-    <div className="layout">
+    <div className="layout" data-testid="wishlist">
       <div className="header">
         <Header />
         <Buttonback page="home" />
       </div>
-      <div className="body body-wishlist">
+      <div className="body body-wishlist" data-testid="wishlist-body">
         {moviesWishList.length > 0 
         ? (
-          <ul className="wishListWrapper" data-testid="wishlist" data-app={moviesWishList}>
+          <ul className="wishListWrapper" data-testid="wishlist-list" data-app={moviesWishList}>
             {moviesWishList.map((movie, index) => (
-              <li key={index} data-id={movie.id}>
+              <li key={index} data-id={movie.id} data-testid="wishlist-item">
                 <img
                   src={`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}
                   alt={`Poster of ${movie.original_title}`}
                   title="Go to movie"
                   onClick={() => handleNavigate(movie.type, movie.id)}
                 />
-                <div className="content">
+                <div className="content" data-testid="wishlist-content">
                   <span>{movie.original_title}</span>
                   <div
                     className="delete-icon"
@@ -72,7 +72,7 @@ const WishList: React.FC = () => {
             ))}
           </ul>
         ) : (
-          <div className="no-wishlist-wrapper">
+          <div className="no-wishlist-wrapper" data-testid="wishlist-no-wishlist">
             <div className="no-wishlist-container">
               <img src={noWishList} alt="No wishlist" />
               <p className="no-wishlist">No movies in your wishlist yet!</p>

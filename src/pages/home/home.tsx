@@ -5,10 +5,10 @@ import Carrousel from '@components/carousel';
 const Home = () => {
   return (
     <>
-      <div className="layout">
+      <div className="layout" data-testid="home">
         <Header />
 
-        <div className="body">
+        <div className="body" data-testid="home-body">
           <div className="content">
             <Carrousel type='top_rated' />
             <Carrousel type='popular' />

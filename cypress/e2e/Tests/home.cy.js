@@ -1,17 +1,36 @@
-// cypress/e2e/home.spec.js
-describe('Home Page', () => {
+/// <reference types="cypress" />
+
+describe('Home Component', () => {
   beforeEach(() => {
-    cy.visit('/'); // Hit your Vite dev server
+    cy.visit('/');
   });
 
-  it('renders Header, Carousels, and Footer', () => {
-    // Assert the header is present
-    cy.contains('Mock Header').should('be.visible');
+  it('renders the Home component with Header, Body, and Footer', () => {
+    cy.get('[data-testid="home"]').should('exist');
+    cy.get('header').should('exist');
+    cy.get('[data-testid="home-body"]').should('exist');
+    cy.get('footer').should('exist');
+  });
 
-    // Assert carousels are rendered
-    cy.get('.mock-carousel').should('have.length', 3); // Ensure the mock has the right class
+  it('renders three Carrousel components with correct types', () => {
+    cy.get('[data-testid="home-body"] .content')
+      .within(() => {
+        cy.get('[data-testid="carousel"]').should('have.length', 3);
+        cy.get('[data-testid="carousel"]').eq(0).should('have.attr', 'data-type', 'top_rated');
+        cy.get('[data-testid="carousel"]').eq(1).should('have.attr', 'data-type', 'popular');
+        cy.get('[data-testid="carousel"]').eq(2).should('have.attr', 'data-type', 'upcoming');
+      });
+  });
 
-    // Assert footer is present
-    cy.contains('Mock Footer').should('be.visible');
+  it('scrolls through carousels and verifies items are displayed', () => {
+    cy.get('[data-testid="carousel"]').each(($carousel) => {
+      cy.wrap($carousel)
+        .scrollTo('right')
+        .wait(500)
+        .scrollTo('left');
+      cy.wrap($carousel).within(() => {
+        cy.get('.carousel-item').should('have.length.greaterThan', 0);
+      });
+    });
   });
 });
