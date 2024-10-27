@@ -45,9 +45,10 @@ And the start the project
 ```
 ## Running Tests
 
+<!-- This section is currently disabled -->
 To run tests, run the following command
 
-```bash
+~~```bash
   npm run test
 ```
 
