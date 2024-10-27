@@ -61,22 +61,29 @@ To run tests, run the following command
 
 #### It is use MovieDBM database
 
+- [MovieDBM](https://www.themoviedb.org/documentation/api)
+
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](assets/images/screenshot_01.png)
+![App Screenshot](assets/images/screenshot_02.png)
+![App Screenshot](assets/images/screenshot_03.png)
 
 
 ## Optimizations
 
 Possibly using another state manager as Zustand or TanTanQuery could better performance and cache
 
+## TODO
+
+- Use a DS to better UX experience
+- Search movies feature
+- Better testing platform and test cases
+
 ## Badges
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
-
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
