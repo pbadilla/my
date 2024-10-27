@@ -111,12 +111,14 @@ const Movie: React.FC<MovieProps> = () => {
                     </ul>
                     <div className="movie-description__actions" data-testid="movie-actions">
                         <Button
+                          id="movie-button-wishlist"
                           className={`movie-button__${type}`}
                           text="Go to movie's homepage" 
                           icon={<Original />} 
                           onClick={() => window.open(movies.homepage, "_blank")}
                         />
                         <Button
+                          id="movie-button-go-to-homepage"
                           className={`movie-button__${type}`}
                           text="Add to whistList" 
                           icon={<FavouritesNew />} 
