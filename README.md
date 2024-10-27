@@ -28,7 +28,7 @@ To start the project you have to Clone this repository into your local
   https://github.com/pbadilla/my.git
 ```
 
-Install all the dependencies (with pnpm or yarn better)
+Install all the dependencies (with pnpm[better option] or yarn )
 
 ```bash
   pnpm install
