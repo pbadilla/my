@@ -4,8 +4,10 @@
   align-items: center;
   margin: 20px 0 0 20px;
   cursor: pointer;
-  img {
-    margin-right: 10px;
-    width: 20px;
-  }
+  position: absolute;
+  top: 20px;
+    img {
+      margin-right: 10px;
+      width: 20px;
+    }
 }

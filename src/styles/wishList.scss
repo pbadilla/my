@@ -1,5 +1,9 @@
 @use './colors';
 
+.body-wishlist {
+  height: 80vh;
+}
+
 .wishListWrapper {
   color: colors.$black;
   display: grid;

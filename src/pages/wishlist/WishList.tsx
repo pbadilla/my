@@ -5,7 +5,8 @@ import { RootState } from "@store/store";
 import { removeMovieFromWishlist } from "@store/wishListSlice";
 
 import Buttonback from "@components/common/buttons/button_back/ButtonBack";
-import Layout from "../../components/layout";
+import Header from "@components/common/header";
+import Footer from "@components/common/footer";
 import Delete from "@components/icons/delete";
 import noWishList from "@images/no_movies.jpg";
 
@@ -41,9 +42,13 @@ const WishList: React.FC = () => {
   }
 
   return (
-    <Layout>
-      <Buttonback page="wishlist" />
-      {moviesWishList.length > 0 
+    <div className="layout">
+      <div className="header">
+        <Header />
+        <Buttonback page="home" />
+      </div>
+      <div className="body body-wishlist">
+        {moviesWishList.length > 0 
         ? (
           <ul className="wishListWrapper" data-testid="wishlist" data-app={moviesWishList}>
             {moviesWishList.map((movie, index) => (
@@ -74,7 +79,9 @@ const WishList: React.FC = () => {
             </div>
           </div>
         )}
-    </Layout>
+      </div>
+      <Footer />
+    </div>
   );
 };
 

@@ -52,7 +52,7 @@ body {
   display: grid;
   grid-area: body;
   grid-template-rows: repeat(3, 1fr);
-  height: 90vh;
+  height: 130vh;
   padding: 20px;
   place-items: center;
 }
@@ -75,7 +75,6 @@ body {
 }
 
 .header {
-  background-color: colors.$primary;
   color: white;
   grid-area: header;
   padding: 20px;

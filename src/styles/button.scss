@@ -1,0 +1,25 @@
+@use './colors';
+
+.button {
+	cursor:pointer;
+	text-decoration:none;
+  align-items: start;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0px 0px 0px 0px colors.$gray;
+  color: colors.$white;
+  display: flex;
+  flex-direction: row;
+  font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  justify-content: center;
+  padding: .5rem;
+
+  .button-icon {
+    color: colors.$white;
+    & > svg {
+      fill: colors.$white;
+      margin-right: 5px;
+    }
+  }
+}

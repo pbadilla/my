@@ -8,13 +8,15 @@ import { useParams } from "react-router-dom";
 import { addMovieToWishlist } from '@store/wishListSlice';
 
 import Buttonback from "@components/common/buttons/button_back/ButtonBack";
-import LazyImage from "@components/image";
-import Layout from "@components/layout";
+import Footer from "@components/common/footer";
+import Header from "@components/common/header";
+import Original from "@components/icons/original";
 
+import LazyImage from "@components/image";
 import FavouritesNew from "@components/icons/love";
 
 import "@styles/movie.scss";
-import Original from "@components/icons/original";
+import Button from "@components/common/buttons/button";
 
 
 export interface Movie {
@@ -68,78 +70,87 @@ const Movie: React.FC<MovieProps> = () => {
   }
 
   return (
-    <CSSTransition in={!!movies} timeout={500} classNames="movie-slide" unmountOnExit>
-    <>
-      {isLoading && <p>Loading...</p>}
-      {serverError && <p>Error: {serverError}</p>}
-      {movies && (
-        <Layout>
-          <Buttonback page="home" />
-          <div className="movieWrapper">
-            <section className="imageMovie">
-              <figure className="addWishlist">
-                <LazyImage
-                  src={`http://image.tmdb.org/t/p/original${movies.backdrop_path}`}
-                />
-                <figcaption>
-                  <h2>Add to my Wishlist</h2>
-                  <a href="#" title="Add to whistList"
-                    onClick={(e) => 
-                      addWishList(e, 
-                      { 
-                          original_title: movies.original_title, 
-                          backdrop_path: movies.backdrop_path, 
-                          id: movies.id,
-                          type: type
-                      })}
-                  ></a>
-                </figcaption>
-              </figure>
-              <div className="addWishlist-bottom-caption">
-                <a href={movies.homepage} title="Go to movie's homepage">
-                  <Original />
-                  Movie's original link
-                </a>
-                <a href="#" title="Add to whistList" onClick={(e) => 
-                  addWishList(e, 
-                  { 
-                        original_title: movies.original_title, 
-                        backdrop_path: movies.backdrop_path, 
-                        id: movies.id,
-                        type: type
-                    })}>
-                  <FavouritesNew />
-                  Add to my wishlist
-                </a>
-            </div>
-            </section>
-            <section className={`descriptionMovie movie-${type}`}>
-              <ul>
-                <li>
-                  <h3>{movies.original_title}</h3>
-                </li>
-                <li>{movies.overview}</li>
-                <li>{movies.popularity}</li>
-                <li className="tagsMovie">{movies.genres[0].name}</li>
-              </ul>
-            </section>
-            <section className={`infoMovie movie-${type}`}>
-              <ul>
-                <li>
-                  <span className="infoMovie-title">Production company:</span>
-                  <span>{movies.production_companies[0].name}</span>
-                </li>
-                <li>
-                  <span className="infoMovie-title">Country:</span>
-                  <span>{movies.production_companies[0].origin_country}</span>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </Layout>
-      )}
-    </>
-  </CSSTransition>
+    <div className="layout">
+      <div className="header">
+        <Header />
+        <Buttonback page="home" />
+      </div>
+      <div className="body body-movie">
+        <div className="content">
+            {isLoading && <p>Loading...</p>}
+            {serverError && <p>Error: {serverError}</p>}
+            {movies && (
+                <>
+                <div className="container">
+                  <section className="container-column__left">
+                    <figure>
+                      <LazyImage
+                        src={`http://image.tmdb.org/t/p/original${movies.backdrop_path}`}
+                      />
+                      <figcaption>
+                        <h2>Add to my Wishlist</h2>
+                        <a href="#" title="Add to whistList"
+                          onClick={(e) => 
+                            addWishList(e, 
+                            { 
+                                original_title: movies.original_title, 
+                                backdrop_path: movies.backdrop_path, 
+                                id: movies.id,
+                                type: type
+                            })}
+                        ></a>
+                      </figcaption>
+                    </figure>
+                  </section>
+                  <section className={`container-column__right movie movie-${type}`}>
+                    <ul className="movie-description">
+                      <li><h3>{movies.original_title}</h3></li>
+                      <li className="movie-description__overview">{movies.overview}</li>
+                      <li className="movie-description__popularity">{movies.popularity}</li>
+                      <li className="movie-description__tagsMovie">{movies.genres[0].name}</li>
+                    </ul>
+                    <div className="movie-description__actions">
+                        <Button
+                          className={`movie-button__${type}`}
+                          text="Go to movie's homepage" 
+                          icon={<Original />} 
+                          onClick={() => window.open(movies.homepage, "_blank")}
+                        />
+                        <Button
+                          className={`movie-button__${type}`}
+                          text="Add to whistList" 
+                          icon={<FavouritesNew />} 
+                          onClick={(e) => 
+                            addWishList(e, 
+                            { 
+                                  original_title: movies.original_title,  
+                                  backdrop_path: movies.backdrop_path, 
+                                  id: movies.id,
+                                  type: type
+                              })}
+                        />
+                    </div>
+                  </section>
+                  <section className={`container-column__footer movie movie-${type}`}>
+                    <ul>
+                      <li>
+                        <h4>Production company:</h4>
+                        <span>{movies.production_companies[0].name}</span>
+                      </li>
+                      <li>
+                        <h4>Country:</h4>
+                        <span>{movies.production_companies[0].origin_country}</span>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+              </>
+            )}
+        </div>
+      </div>
+
+      <Footer />
+    </div>
   );
 };
 

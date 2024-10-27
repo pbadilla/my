@@ -1,32 +1,33 @@
 @use './colors';
 
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker:400');
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
-
 @import url('https://fonts.googleapis.com/css2?family=Limelight');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron');
 
-.movieWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  min-height: 300px;
-  padding: 0 1rem 1rem 10px;
-  width: 100%;
-  
-  ul li {
-    margin-bottom: 1rem;
+.body-movie {
+  height: 80vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "left right"
+      "footer footer";
   }
 
-  .imageMovie {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-
-    figure.addWishlist {
+  &-column__left {
+    grid-area: left;
+  
+    figure {
 
       color: colors.$black;
       margin: 0;
@@ -137,96 +138,82 @@
       }
     }
 
-    .addWishlist-bottom-caption {
-      display: flex;
-      flex-direction: row;
-      justify-content: end;
-      position: relative;
-      top: 0;
-      a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-left: 10px;
-        svg {
-          margin-right: 5px;
-        }
-      }
-    }
   }
 
-  .descriptionMovie {
-    display: flex;
-    text-align: left;
-    padding-left: 1rem;
-    padding-right: 0.5rem;
-    width: 46%;
-
+  &-column__right {
+    grid-area: right;
     h3 {
       font-weight: bold;
       font-size: 2rem;
       padding: 0;
       margin: 10px 0 0 0;  
     }
-
-    &.movie-top_rated {
-      color: colors.$primary;
-      font-family: Limelight, sans-serif;
-      h3 {
-        color: colors.$black;
-        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
-      }
-    }
-
-    &.movie-popular {
-      color: colors.$accent;
-      font-family: Orbitron, serif;
-      h3 {
-        color: colors.$black;
-        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
-      }
-    }
-
-    &.movie-upcoming {
-      color: colors.$color-upcoming;
-      font-family: Roboto Condensed, sans-serif;
-      h3 {
-        color: colors.$black;
-        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
-      }
-    }
   }
 
-  .infoMovie {
-    display: flex;
-    padding-left: 10px;
-    text-align: left;
-    width: 98%;
+  &-column__footer {
+    grid-area: footer;
+    ul li {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      & > h4 {
+        color: colors.$black;
+        font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
+        margin: 0 5px 0 0;
+        padding: 0;
+      }
+    } 
+  }
+}
 
-    ul {
-      margin-top: 1rem;
-    }
+.movie {
+  ul {
+    margin-top: 1rem;
+  }
 
-    &.movie-top_rated {
-      color: colors.$primary;
-      font-family: Limelight, sans-serif;
-    }
+  h3 {
+    color: colors.$black;
+    font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
 
-    &.movie-popular {
-      color: colors.$accent;
-      font-family: Orbitron, serif;
-    }
+  .movie-description {
+    &__actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
 
-    &.movie-upcoming {
-      color: colors.$color-upcoming;
-      font-family: Roboto Condensed, sans-serif;
     }
+  }
+  &.movie-top_rated {
+    color: colors.$primary;
+    .movie-description__actions > button {
+      background-color: colors.$primary;
+    }
+    font-family: Limelight, sans-serif;
+  }
+  
+  &.movie-popular {
+    color: colors.$accent;
+    .movie-description__actions > button {
+      background-color: colors.$accent;
+    }
+    font-family: Orbitron, serif;
+  }
+  
+  &.movie-upcoming {
+    color: colors.$color-upcoming;
+    .movie-description__actions > button {
+      background-color: colors.$color-upcoming;
+    }
+    font-family: Roboto Condensed, sans-serif;
+  }
 
-    &-title {
-      color: colors.$black;
-      font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
-      margin-right: 5px;      
-    }
+  &-title {
+    color: colors.$black;
+    font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    margin-right: 5px;      
   }
 }
 
