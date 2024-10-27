@@ -26,7 +26,7 @@ const Carrousel: React.FC<CarrouselProps> = ({ type }) => {
   };
 
   return (
-    <div className="image-slider-container carousel-container" data-testid="carousel">
+    <div className="carousel-container" data-testid="carousel">
       {isLoading && <p>Loading...</p>}
       {serverError && <p>Error: {serverError}</p>}
       {movies && (

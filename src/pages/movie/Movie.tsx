@@ -28,6 +28,8 @@ export interface MovieApiResponse {
 }
 
 interface MovieType {
+  id: number;
+  type: string;
   backdrop_path: string;
   original_title: string;
   overview: string;
@@ -53,7 +55,14 @@ const Movie: React.FC<MovieProps> = () => {
   const { isLoading, apiData: movies, serverError } = useFetchData<MovieType>(url)
 
 
-  function addWishList(e: React.MouseEvent, movie: { original_title: string; backdrop_path: string }) {
+  function addWishList(
+    e: React.MouseEvent, 
+    movie: { 
+      original_title: string; 
+      backdrop_path: string, 
+      id: number, 
+      type: string 
+    }) {
     e.preventDefault();
     dispatch(addMovieToWishlist(movie));
   }
@@ -74,19 +83,31 @@ const Movie: React.FC<MovieProps> = () => {
                 />
                 <figcaption>
                   <h2>Add to my Wishlist</h2>
-                  <a
-                    href="#"
-                    onClick={(e) => addWishList(e, { original_title: movies.original_title, backdrop_path: movies.backdrop_path })}
-
+                  <a href="#" title="Add to whistList"
+                    onClick={(e) => 
+                      addWishList(e, 
+                      { 
+                          original_title: movies.original_title, 
+                          backdrop_path: movies.backdrop_path, 
+                          id: movies.id,
+                          type: type
+                      })}
                   ></a>
                 </figcaption>
               </figure>
               <div className="addWishlist-bottom-caption">
-                <a href={movies.homepage}>
+                <a href={movies.homepage} title="Go to movie's homepage">
                   <Original />
                   Movie's original link
                 </a>
-                <a href="#" onClick={(e) =>addWishList(e,movies)}>
+                <a href="#" title="Add to whistList" onClick={(e) => 
+                  addWishList(e, 
+                  { 
+                        original_title: movies.original_title, 
+                        backdrop_path: movies.backdrop_path, 
+                        id: movies.id,
+                        type: type
+                    })}>
                   <FavouritesNew />
                   Add to my wishlist
                 </a>

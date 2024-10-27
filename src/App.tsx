@@ -1,11 +1,11 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { createBrowserHistory } from "history";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react'
 
-import '@styles/app.scss'
+import '@styles/app.scss';
 
 import { Home, Movie, Error, WishList } from './pages';
-import store from '@store/store';
+import store, { persistor } from '@store/store';
 
 const router = createBrowserRouter([
   {
@@ -25,14 +25,14 @@ const router = createBrowserRouter([
   }
 ]);
 
-const history = createBrowserHistory();
-
 const App = () => {
-  return(
+  return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   )
 }
 
-export default App
+export default App;

@@ -1,10 +1,12 @@
 @use './colors';
 
-@import url(https://fonts.googleapis.com/css?family=Permanent+Marker:400);
-@import url(https://fonts.googleapis.com/css?family=Orbitron:400italic);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);
-@import url(https://fonts.googleapis.com/css2?family=Limelight);
-@import url(https://fonts.googleapis.com/css2?family=Orbitron);
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker:400');
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+
+@import url('https://fonts.googleapis.com/css2?family=Limelight');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron');
 
 .movieWrapper {
   display: flex;
@@ -41,7 +43,7 @@
       img {
         border-radius: 4px;
         margin-top: 20px;
-        max-height: 250px;
+        max-height: 300px;
         opacity: 1;
         transition: opacity 0.5s;
         width: 100%;

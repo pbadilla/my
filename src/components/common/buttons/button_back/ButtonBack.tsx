@@ -17,7 +17,7 @@ const ButtonBack: React.FC<ButtonBackProps> = ({ page = 'home' }) => {
   };
 
   return (
-    <a className="backbuttonWrapper" onClick={handleBackClick} title={page}>
+    <a className="backbuttonWrapper" onClick={handleBackClick} title={`Go to ${page}`}>
       <img src={arrowLeft} alt="Go previous" />
       <span>Return</span>
     </a>

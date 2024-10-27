@@ -3,8 +3,10 @@ import { toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface Movie {
-  original_title: string;
   backdrop_path: string;
+  id: number;
+  original_title: string;
+  type: string;
 }
 
 export interface WishlistState {

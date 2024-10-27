@@ -10,7 +10,7 @@ interface RouteError {
 const Error = () => {
   const error = useRouteError() as RouteError;
 
-  console.log(error);
+  console.error(error);
 
   if (error?.status === 404) {
     return (
