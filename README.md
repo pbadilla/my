@@ -63,14 +63,6 @@ To run tests, run the following command
 
 - [MovieDBM](https://www.themoviedb.org/documentation/api)
 
-
-## Screenshots
-
-![App Screenshot](/src/assets/images/screenshot_01.png?raw=true "Movies")
-![App Screenshot](/src/assets/images/screenshot_02.png?raw=true "Card")
-![App Screenshot](/src/assets/images/screenshot_03.png?raw=true "Wishlist")
-
-
 ## Optimizations
 
 Possibly using another state manager as Zustand or TanTanQuery could better performance and cache
