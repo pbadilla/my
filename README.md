@@ -66,9 +66,9 @@ To run tests, run the following command
 
 ## Screenshots
 
-![App Screenshot](assets/images/screenshot_01.png)
-![App Screenshot](assets/images/screenshot_02.png)
-![App Screenshot](assets/images/screenshot_03.png)
+![App Screenshot](/assets/images/screenshot_01.png?raw=true "Optional Title")
+![App Screenshot](/assets/images/screenshot_02.png?raw=true "Optional Title")
+![App Screenshot](/assets/images/screenshot_03.png?raw=true "Optional Title")
 
 
 ## Optimizations
