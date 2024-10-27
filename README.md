@@ -1,5 +1,5 @@
 
-# myTheresa - Movies
+# myTheresa - Carrousel Movies, Card and Wishlist
 
 - Carrousel with 3 differents types of movies. Details and Wishlist.
 
@@ -45,13 +45,12 @@ And the start the project
 ```
 ## Running Tests
 
-<!-- This section is currently disabled -->
+
 To run tests, run the following command
 
-~~```bash
-  npm run test
+```bash
+  <!-- This section is currently disabled -->
 ```
-
 
 ## Authors
 
