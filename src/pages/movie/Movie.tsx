@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { addMovieToWishlist } from '@store/wishListSlice';
 
 import Buttonback from "@components/common/buttons/button_back/ButtonBack";
+import Button from "@components/common/buttons/button";
 import Footer from "@components/common/footer";
 import Header from "@components/common/header";
 import Original from "@components/icons/original";
@@ -16,8 +17,6 @@ import LazyImage from "@components/image";
 import FavouritesNew from "@components/icons/love";
 
 import "@styles/movie.scss";
-import Button from "@components/common/buttons/button";
-
 
 export interface Movie {
   id: number;
