@@ -1,38 +1,29 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from "redux-persist/integration/react";
 
-import '@styles/app.scss';
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@store/queryClient";
 
-import { Home, Movie, Error, WishList } from './pages';
-import store, { persistor } from '@store/store';
+import { ThemeProvider } from "../src/context/ThemeContext";
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home  />,
-    errorElement: <Error />,
-  },
-  {
-    path: '/movie/:type/:id',
-    element: <Movie />,
-    errorElement: <Error />,
-  },
-  {
-    path: '/wishlist',
-    element: <WishList />,
-    errorElement: <Error />,
-  }
-]);
+import store, { persistor } from "@store/store";
+import { Router } from "./router/Router";
+
+import "@styles/index.scss";
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
-      </PersistGate>
-    </Provider>
-  )
-}
+    <ThemeProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={Router} />
+          </QueryClientProvider>
+        </PersistGate>
+      </Provider>
+    </ThemeProvider>
+  );
+};
 
 export default App;

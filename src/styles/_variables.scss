@@ -1,0 +1,78 @@
+:root {
+  /* Background & text */
+  --background: hsl(220, 15%, 8%);
+  --foreground: hsl(210, 20%, 95%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+
+  /* Surfaces */
+  --card: hsl(220, 15%, 12%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --popover: hsl(220, 15%, 12%);
+  --popover-foreground: hsl(0, 0%, 95%);
+
+  /* Primary accent */
+  --primary: hsl(45, 90%, 55%);
+  --primary-foreground: hsl(220, 15%, 8%);
+  --accent: hsl(200, 90%, 55%);
+
+  /* Muted */
+  --muted: hsl(220, 10%, 16%);
+  --muted-foreground: hsl(215, 15%, 65%);
+
+  /* Destructive */
+  --destructive: hsl(0, 75%, 55%);
+  --destructive-foreground: hsl(0, 0%, 95%);
+
+  /* Borders */
+  --border: hsl(220, 10%, 25%);
+  --border-color: 255, 255, 255; /* use with rgba(var(--border-color), 0.5) */
+  --radius: 0.5rem;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, hsl(220, 15%, 8%) 0%, hsl(220, 20%, 12%) 100%);
+  --gradient-card: linear-gradient(to bottom, #1e293b, #0f172a);
+
+  /* Shadows */
+  --shadow-elegant: 0 20px 40px -10px hsl(220 15% 4% / 0.6);
+  --shadow-glow: 0 0 40px hsl(45, 90%, 55% / 0.3);
+
+  /* Category Colors */
+  --color-action: hsl(200, 80%, 55%);
+  --color-drama: hsl(340, 70%, 50%);
+  --color-comedy: hsl(45, 90%, 55%);
+  --color-primary: hsl(210, 15%, 20%);
+
+  /* Rating Colors */
+  --rating-red: hsl(0, 90%, 55%);
+  --rating-orange: hsl(30, 90%, 55%);
+  --rating-yellow: hsl(45, 90%, 55%);
+  --rating-light-green: hsl(120, 60%, 50%);
+  --rating-green: hsl(140, 70%, 45%);
+
+  /* Fonts */
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-fredoka: "Fredoka", cursive;
+
+  /* Category Shadows */
+  --shadow-action: 0 4px 12px rgba(0, 128, 255, 0.4);
+  --shadow-drama: 0 4px 12px rgba(220, 20, 60, 0.4);
+  --shadow-comedy: 0 4px 12px rgba(255, 200, 50, 0.4);
+  --shadow-default: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+/* Dark mode */
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 33%, 18%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --border: hsl(217, 33%, 18%);
+}

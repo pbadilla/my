@@ -39,3 +39,14 @@ $screen-xl-min: 1200px;
     @content;
   }
 }
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition-smooth {
+  transition: var(--transition-smooth);
+}
+

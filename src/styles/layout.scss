@@ -1,0 +1,32 @@
+.layout {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  section, h1, p {
+    color: var(--foreground);
+  }
+}
+
+.layout-main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  section, h1, p {
+    color: var(--foreground);
+  }
+  flex: 1;
+}
+
+/* Movie carousel sections */
+.movie-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

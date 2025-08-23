@@ -1,41 +1,16 @@
-@use './colors';
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 5rem; /* mt-20 */
+}
 
-footer {
-  align-content: flex-end;
-  background-color: colors.$background-footer;
-  color: colors.$black;
-  display: flex;
-  flex-direction: row;
-  font-size: 1rem;
-  font-weight: bold;
-  justify-content: space-between;
-  padding: 0.5rem;
-  text-align: right;
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
 
-  a {
-    color: colors.$dark-gray; 
-  }
-
-  p {
-    text-align: right;
-    width: 100%;
-  }
-
-  .logo {
-    width: 100px;
-  }
-
-  .favourites-link {
-    margin-right: 2rem;
-
-    a {
-      align-items: end;
-      display: flex;
-
-      img {
-        margin-right: 5px;
-        width: 30px;
-      }
-    }
-  }
+.footer-text {
+  text-align: center;
+  color: var(--muted-foreground, #6b7280);
+  font-family: 'Inter', sans-serif;
 }

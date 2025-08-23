@@ -1,0 +1,85 @@
+
+.header {
+  background: var(--background);
+  border-bottom: 1px solid rgba(var(--border-color), 0.5);
+  backdrop-filter: blur(4px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-container {
+  margin: 0 auto;
+  padding: 1rem 1rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.brand-icon {
+  display: block;
+  width: 140px;
+  height: 70px;
+}
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, var(--primary-color), rgba(var(--primary-color-rgb), 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-button {
+  font-family: 'Inter', sans-serif;
+}
+
+.wishlist-button {
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.wishlist-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: glow-pulse 1.5s infinite;
+}
+
+/* Animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--destructive);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--destructive);
+  }
+}

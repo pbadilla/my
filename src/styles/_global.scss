@@ -1,7 +1,56 @@
-html, body {
-  margin: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Fredoka:wght@400;500;600&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Light Theme */
+:root[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #111111;
+
+  /* Header & navbar */
+  --border-color: 200, 200, 200; /* for rgba(var(--border-color), 0.5) */
+  --primary-color: #111;
+  --primary-color-rgb: 107, 91, 149;
+
+  /* Buttons / badges */
+  --destructive: #ff4d4f;
+  --destructive-foreground: #ffffff;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+  --background: #111111;
+  --foreground: #ffffff;
+
+  --border-color: 255, 255, 255;
+  --primary-color: #FFF;
+  --primary-color-rgb: 138, 107, 177;
+
+  --destructive: #ff7875;
+  --destructive-foreground: #111111;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+
+.header,
+.header-container,
+.navbar,
+.brand,
+.brand-icon,
+.brand-title,
+.nav-links,
+.nav-button,
+.wishlist-button,
+.wishlist-badge {
+  transition: all 0.3s ease;
 }

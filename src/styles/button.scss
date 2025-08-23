@@ -1,25 +1,55 @@
-@use './colors';
-
 .button {
-	cursor:pointer;
-	text-decoration:none;
-  align-items: start;
-  border: none;
-  border-radius: 0;
-  box-shadow: 0px 0px 0px 0px colors.$gray;
-  color: colors.$white;
-  display: flex;
-  flex-direction: row;
-  font-family: "Jost", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  padding: .5rem;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  font-family: "Jost", sans-serif;
+    text-decoration: none; /* ensures no underline */
+  font-size: 1rem;
+  transition: all 0.3s ease;
 
   .button-icon {
-    color: colors.$white;
-    & > svg {
-      fill: colors.$white;
-      margin-right: 5px;
+    display: inline-flex;
+    svg {
+      fill: var(--background);
+    }
+  }
+
+
+
+  /* Variants */
+  &--default { 
+    background: var(--foreground); 
+    color: var(--background); 
+  }
+  &--ghost { background: transparent; color: var(--foreground); }
+  &--action { background: var(--gradient-action); color: var(--foreground); }
+  &--drama { background: var(--gradient-drama); color: var(--foreground); }
+  &--comedy { background: var(--gradient-comedy); color: var(--foreground); }
+  &--wishlist { background: var(--primary)/20; color: var(--foreground); }
+
+  /* Sizes */
+  &--sm { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+  &--md { padding: 0.5rem 1rem; font-size: 1rem; }
+  &--lg { padding: 0.75rem 1.5rem; font-size: 1.125rem; }
+  &--xl { padding: 1rem 2rem; font-size: 1.25rem; }
+  &--icon { padding: 0.5rem; width: 2.5rem; height: 2.5rem; }
+
+
+  
+  &--default,
+  &--ghost,
+  &--action,
+  &--drama,
+  &--comedy,
+  &--wishlist {
+    text-decoration: none; 
+    .button-text {
+      text-decoration: none;
     }
   }
 }
