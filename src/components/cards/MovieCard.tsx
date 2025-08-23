@@ -17,39 +17,6 @@ interface MovieCardProps {
 }
 
 export const MovieCard = ({ movie, type }: MovieCardProps) => {
-  const getCategoryStyles = (category: Movie["category"]) => {
-    switch (category) {
-      case "action":
-        return {
-          cardClass: "hover:shadow-action group-hover:shadow-action",
-          textClass: "font-inter",
-          accentColor: "text-action",
-        };
-      case "drama":
-        return {
-          cardClass: "hover:shadow-drama group-hover:shadow-drama",
-          textClass: "font-playfair",
-          accentColor: "text-drama",
-        };
-      case "comedy":
-        return {
-          cardClass: "hover:shadow-comedy group-hover:shadow-comedy",
-          textClass: "font-fredoka",
-          accentColor: "text-comedy",
-        };
-      default:
-        return {
-          cardClass: "",
-          textClass: "font-inter",
-          accentColor: "text-primary",
-        };
-    }
-  };
-
-  const styles = getCategoryStyles(movie.category);
-
-  console.log("MovieCard render:", type);
-
   return (
     <Link to={`/movie/${movie.id}`} className="movie-card-link">
       <Card className={`movie-card ${getCategoryClass(type, "movie-card")}`}>

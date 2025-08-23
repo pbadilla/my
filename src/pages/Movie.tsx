@@ -1,20 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { CSSTransition } from "react-transition-group";
 
 import { useFetchData } from "@hooks/useFetch";
 import { useParams } from "react-router-dom";
 
 import { addMovieToWishlist } from "@store/wishListSlice";
-
-// import Buttonback from "@components/buttons/button_back/ButtonBack";
-// import Button from "@components/buttons/button";
-// import Footer from "@components/common/footer";
-// import Header from "@components/common/header";
-// import Original from "@components/icons/original";
-
-// import LazyImage from "@components/image";
-// import FavouritesNew from "@components/icons/love";
 
 import "@styles/movie.scss";
 
@@ -73,7 +63,7 @@ const Movie: React.FC<MovieProps> = () => {
 
   return (
     <div className="layout" data-testid="movie">
-      {/* <div className="header">
+      <div className="header">
         <Header />
         <Buttonback page="home" />
       </div>
@@ -182,7 +172,7 @@ const Movie: React.FC<MovieProps> = () => {
         </div>
       </div>
 
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

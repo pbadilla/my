@@ -1,6 +1,6 @@
 import React from "react";
 
-import Logo from "@images/footer_logo.png";
+import LogoMytheresa from "@components/icons/logo_mytheresa";
 
 import "@styles/footer.scss";
 
@@ -9,7 +9,9 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-text">
-          <span>{Logo}</span>
+          <span>
+            <LogoMytheresa />
+          </span>
           <p>
             @ copyright 2024 myTheresa developed by{" "}
             <a href="https://github.com/pachibadilla">pachibadilla</a>
