@@ -1,180 +1,127 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { fetchMovie } from "@utils/fetchMovies";
+import type { Movie } from "../types/movies";
+import Layout from "@components/layout/Layout";
+import Button from "@components/common/Button";
+import Card from "@components/common/Card";
 
-import { useFetchData } from "@hooks/useFetch";
-import { useParams } from "react-router-dom";
+import { FaStar, FaCalendar, FaClock, FaHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { addToWishlist, isInWishlist } from "@utils/wishList";
 
-import { addMovieToWishlist } from "@store/wishListSlice";
+import "@styles/movieDetails.scss";
+import { getTmdbImage } from "@utils/tmdb";
 
-import "@styles/movie.scss";
+const MoviePage = () => {
+  const { id: idMovie } = useParams<{ id: string }>();
 
-export interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-}
+  const [movieData, setMovieData] = useState<Movie | null>(null);
+  const [inWishlist, setInWishlist] = useState(false);
 
-export interface MovieApiResponse {
-  results: Movie[];
-}
-
-interface MovieType {
-  id: number;
-  type: string;
-  backdrop_path: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  genres: { name: string }[];
-  production_companies: { name: string; origin_country: string }[];
-  homepage: string;
-}
-
-interface MovieProps {
-  idMovie?: string;
-  type?: string;
-}
-
-const Movie: React.FC<MovieProps> = () => {
-  const { id: idMovie, type } = useParams<{ id: string; type: string }>();
-
-  const dispatch = useDispatch();
-
-  // Access the global state for API data
-  const url = `https://api.themoviedb.org/3/movie/${idMovie}?api_key=7006edd4690fd5f45e7b5cb6b1561357&language=en-US`;
-  const {
-    isLoading,
-    apiData: movies,
-    serverError,
-  } = useFetchData<MovieType>(url);
-
-  function addWishList(
-    e: React.MouseEvent,
-    movie: {
-      original_title: string;
-      backdrop_path: string;
-      id: number;
-      type: string;
+  useEffect(() => {
+    if (idMovie) {
+      setInWishlist(isInWishlist(idMovie));
     }
-  ) {
-    e.preventDefault();
-    dispatch(addMovieToWishlist(movie));
-  }
+  }, [idMovie]);
+
+  const {
+    data: movie,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<Movie>({
+    queryKey: ["movie", idMovie],
+    queryFn: () => fetchMovie(idMovie!),
+    staleTime: 1000 * 60 * 5,
+    enabled: Boolean(idMovie),
+  });
+
+  // ✅ hook stays at top level, updates local state
+  useEffect(() => {
+    if (movie) {
+      setMovieData(movie);
+    }
+    console.log("movie", movie);
+  }, [movie]);
+
+  const handleAddToWishlist = () => {
+    if (!idMovie || !movieData) return;
+
+    const success = addToWishlist(movieData);
+
+    if (success) {
+      setInWishlist(true);
+      window.dispatchEvent(new Event("wishlistUpdated"));
+      toast.success(`${movieData.title} has been added to your wishlist!`);
+    } else {
+      toast.info(`${movieData.title} is already in your wishlist.`);
+    }
+  };
+
+  // ✅ handle loading / error states after hooks
+  if (!idMovie) return <p>No movie ID provided</p>;
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>{(error as Error).message}</p>;
+  if (!movieData) return <p>Movie not found</p>;
 
   return (
-    <div className="layout" data-testid="movie">
-      <div className="header">
-        <Header />
-        <Buttonback page="home" />
-      </div>
-      <div className="body body-movie" data-testid="movie-body">
-        <div className="content">
-          {isLoading && <p>Loading...</p>}
-          {serverError && <p>Error: {serverError}</p>}
-          {movies && (
-            <>
-              <div className="container" data-testid="movies-container">
-                <section className="container-column__left">
-                  <figure>
-                    <LazyImage
-                      src={`http://image.tmdb.org/t/p/original${movies.backdrop_path}`}
-                    />
-                    <figcaption>
-                      <h2>Add to my Wishlist</h2>
-                      <a
-                        href="#"
-                        title="Add to whistList"
-                        onClick={(e) =>
-                          addWishList(e, {
-                            original_title: movies.original_title,
-                            backdrop_path: movies.backdrop_path,
-                            id: movies.id,
-                            type: type,
-                          })
-                        }
-                      ></a>
-                    </figcaption>
-                  </figure>
-                </section>
-                <section
-                  className={`container-column__right movie movie-${type}`}
-                >
-                  <ul className="movie-description">
-                    <li data-testid="movie-title">
-                      <h3>{movies.original_title}</h3>
-                    </li>
-                    <li
-                      data-testid="movie-overview"
-                      className="movie-description__overview"
-                    >
-                      {movies.overview}
-                    </li>
-                    <li
-                      data-testid="movie-popularity"
-                      className="movie-description__popularity"
-                    >
-                      {movies.popularity}
-                    </li>
-                    <li
-                      data-testid="movie-genre"
-                      className="movie-description__tagsMovie"
-                    >
-                      {movies.genres[0].name}
-                    </li>
-                  </ul>
-                  <div
-                    className="movie-description__actions"
-                    data-testid="movie-actions"
-                  >
-                    <Button
-                      id="movie-button-wishlist"
-                      className={`movie-button__${type}`}
-                      text="Go to movie's homepage"
-                      icon={<Original />}
-                      onClick={() => window.open(movies.homepage, "_blank")}
-                    />
-                    <Button
-                      id="movie-button-go-to-homepage"
-                      className={`movie-button__${type}`}
-                      text="Add to whistList"
-                      icon={<FavouritesNew />}
-                      onClick={(e) =>
-                        addWishList(e, {
-                          original_title: movies.original_title,
-                          backdrop_path: movies.backdrop_path,
-                          id: movies.id,
-                          type: type,
-                        })
-                      }
-                    />
+    <Layout hasHeroSection={false} hasBackButton={true}>
+      <div className="movie-details">
+        <div className="container">
+          <div className="grid">
+            {/* Poster */}
+            <div className="poster">
+              <Card>
+                <img
+                  src={getTmdbImage(movieData.posterUrl) || "/placeholder.svg"}
+                  alt={movieData.title}
+                />
+              </Card>
+            </div>
+
+            {/* Details */}
+            <div className="details">
+              <div>
+                <div className="category">{movieData.category}</div>
+                <h1 className="title">{movieData.title}</h1>
+
+                <div className="meta">
+                  <div className="meta-item">
+                    <FaStar className="icon fill-primary" />
+                    <span>{movieData.rating}</span>
                   </div>
-                </section>
-                <section
-                  className={`container-column__footer movie movie-${type}`}
-                  data-testid="movie-footer"
-                >
-                  <ul>
-                    <li>
-                      <h4>Production company:</h4>
-                      <span>{movies.production_companies[0].name}</span>
-                    </li>
-                    <li>
-                      <h4>Country:</h4>
-                      <span>
-                        {movies.production_companies[0].origin_country}
-                      </span>
-                    </li>
-                  </ul>
-                </section>
+                  <div className="meta-item">
+                    <FaCalendar className="icon" />
+                    <span>{movieData.year}</span>
+                  </div>
+                  <div className="meta-item">
+                    <FaClock className="icon" />
+                    <span>{movieData.duration} min</span>
+                  </div>
+                </div>
               </div>
-            </>
-          )}
+
+              <div className="description">
+                <h2 className="title">Description</h2>
+                <p>{movieData.description}</p>
+              </div>
+
+              <div className="wishlist-button">
+                <Button
+                  onClick={handleAddToWishlist}
+                  disabled={inWishlist}
+                  icon={<FaHeart />}
+                  text={inWishlist ? "Added to Wishlist" : "Add to Wishlist"}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
-export default Movie;
+export default MoviePage;

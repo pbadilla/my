@@ -1,12 +1,19 @@
 export interface Movie {
   id: string;
-  title: string;
+  backdrop_path?: string;
+  category?: 'action' | 'drama' | 'comedy';
   description: string;
-  category: 'action' | 'drama' | 'comedy';
-  posterUrl: string;
-  rating: number;
-  year: number;
   duration: number;
+  genres?: { name: string }[];
+  homepage?: string;
+  original_title?: string;
+  popularity?: number;
+  posterUrl: string;
+  production_companies?: { name: string; origin_country: string }[];
+  rating: number;
+  title: string;
+  type?: MovieTypes;
+  year: number;
 }
 
 export interface MovieCarouselProps {
@@ -15,10 +22,10 @@ export interface MovieCarouselProps {
   category: Movie['category'];
 }
 
-export interface MovieApiResponse {
+export interface MoviesResponse {
   results: Movie[];
   page: number;
   total_pages: number;
   total_results: number;
 }
-export type MovieType = 'popular' | 'top_rated' | 'upcoming';
+export type MovieTypes = 'popular' | 'top_rated' | 'upcoming';

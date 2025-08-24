@@ -6,10 +6,12 @@ import MovieCarousel from "@components/carousel/MovieCarrousel";
 
 const Home: React.FC = () => {
   return (
-    <Layout hasHeroSection={true} hasCarrousels={true}>
-      <MovieCarousel type="top_rated" title="Top Rated Movies" />
-      <MovieCarousel type="popular" title="Popular Movies" />
-      <MovieCarousel type="upcoming" title="Upcoming Movies" />
+    <Layout hasHeroSection={true}>
+      <div className="movie-sections">
+        <MovieCarousel type="top_rated" title="Top Rated Movies" />
+        <MovieCarousel type="popular" title="Popular Movies" />
+        <MovieCarousel type="upcoming" title="Upcoming Movies" />
+      </div>
     </Layout>
   );
 };

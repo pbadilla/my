@@ -1,58 +1,84 @@
-import { useRef } from "react";
-
+import { useRef, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMovies } from "@utils/fetchMovies";
-import type { MovieApiResponse } from "../../types/movies";
-
+import type { MoviesResponse } from "../../types/movies";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
 import { MovieCard } from "@components/cards/MovieCard";
-
-import "@styles/movieCarrousel.scss";
 import { getCategoryClass } from "@utils/getCategories";
+import { useMoviesStore } from "@store/moviesStore";
+import "@styles/movieCarrousel.scss";
+import { toast } from "react-toastify";
 
-interface MovieCarousel {
+interface MovieCarouselProps {
   type: string;
   title: string;
 }
 
-export const MovieCarousel = ({ type, title }: MovieCarousel) => {
+export const MovieCarousel = ({ type, title }: MovieCarouselProps) => {
+  const addMovies = useMoviesStore((s) => s.addMovies);
+  const cachedMovies = useMoviesStore((s) => s.movies);
+
   const {
     data: moviesResponse,
     isLoading,
+    isError,
     error,
-  } = useQuery<MovieApiResponse>({
+  } = useQuery<MoviesResponse>({
     queryKey: ["movies", type],
     queryFn: () => fetchMovies(type),
+    placeholderData: {
+      results: cachedMovies,
+      page: 1,
+      total_pages: 1,
+      total_results: cachedMovies.length,
+    },
+    staleTime: 1000 * 60 * 5,
   });
+
+  if (error) {
+    if (error instanceof Error) {
+      toast.error("Error fetching movies: " + error.message);
+    } else {
+      toast.error("Error fetching movies: " + error);
+    }
+  }
+
+  useEffect(() => {
+    if (!moviesResponse) return;
+
+    const existingIds = cachedMovies.map((m) => m.id);
+    const newMovies = moviesResponse.results.filter(
+      (m) => !existingIds.includes(m.id)
+    );
+
+    if (newMovies.length > 0) {
+      addMovies(newMovies);
+    }
+  }, [moviesResponse, cachedMovies, addMovies]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 320; // Width of card + gap
-      const newScrollLeft =
-        scrollContainerRef.current.scrollLeft +
-        (direction === "left" ? -scrollAmount : scrollAmount);
+    if (!scrollContainerRef.current) return;
+    const scrollAmount = 320; // card width + gap
+    const newScrollLeft =
+      scrollContainerRef.current.scrollLeft +
+      (direction === "left" ? -scrollAmount : scrollAmount);
 
-      scrollContainerRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: "smooth",
-      });
-    }
+    scrollContainerRef.current.scrollTo({
+      left: newScrollLeft,
+      behavior: "smooth",
+    });
   };
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading movies</p>;
+  if (isError) return <p>Error loading movies</p>;
 
   return (
     <section className="section-movies">
       <div className="section-header">
         <h2
-          className={`section-title ${getCategoryClass(
-            type,
-            "section-title"
-          )} `}
+          className={`section-title ${getCategoryClass(type, "section-title")}`}
         >
           {title}
         </h2>

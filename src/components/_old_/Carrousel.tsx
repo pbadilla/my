@@ -1,19 +1,23 @@
 import React from "react";
 
-import Slider from 'react-slick';
+import Slider from "react-slick";
 
 import { useFetchData } from "@hooks/useFetch";
-import { MovieApiResponse, CarrouselProps } from "./enum";
+import { MoviesResponse, CarrouselProps } from "./enum";
 
 import Card from "@components/cards/cards";
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import '@styles/Carousel.scss';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "@styles/Carousel.scss";
 
 const Carrousel: React.FC<CarrouselProps> = ({ type }) => {
   const url = `https://api.themoviedb.org/3/movie/${type}?api_key=7006edd4690fd5f45e7b5cb6b1561357&language=en-US`;
-  const { isLoading, apiData: movies, serverError } = useFetchData<MovieApiResponse>(url);
+  const {
+    isLoading,
+    apiData: movies,
+    serverError,
+  } = useFetchData<MoviesResponse>(url);
 
   const settings = {
     dots: true,

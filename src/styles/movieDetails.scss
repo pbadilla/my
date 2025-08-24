@@ -1,0 +1,142 @@
+.movie-details {
+  min-height: 100vh;
+  transition: all 0.5s;
+  &.bgClass {
+    // Placeholder for your dynamic background class
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem; // px-4 py-6
+  }
+
+  .back-button {
+    margin-bottom: 1.5rem; // mb-6
+    display: inline-flex;
+    align-items: center;
+
+    .icon {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .grid {
+    display: grid;
+    gap: 3rem; // gap-12
+    align-items: start;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .poster {
+    position: relative;
+
+    .card {
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.5); // border-border/50
+      border-radius: 0.5rem; // optional
+      &.shadowClass {
+        // Your dynamic shadow
+      }
+
+      img {
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; // space-y-8
+
+    .category {
+      font-size: 0.875rem; // text-sm
+      font-weight: 500; // font-medium
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      &.textClass {
+        // dynamic text color
+      }
+    }
+
+    h1.title {
+      font-size: 3rem; // text-5xl
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      &.titleClass {
+        // dynamic title color
+      }
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; // gap-6
+      color: #9ca3af; // text-muted-foreground
+      margin-bottom: 1.5rem;
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .icon {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+
+        .fill-primary {
+          fill: #3b82f6; // primary color
+        }
+
+        font-weight: 600;
+      }
+    }
+
+    .description {
+      h2 {
+        font-size: 1.5rem; // text-2xl
+        font-weight: 600;
+        margin-bottom: 1rem;
+        &.titleClass {
+          // dynamic title style
+        }
+      }
+
+      p {
+        font-size: 1.125rem; // text-lg
+        line-height: 1.75rem;
+        font-family: 'Inter', sans-serif;
+        color: #6b7280; // text-muted-foreground
+      }
+    }
+
+    .wishlist-button {
+      padding-top: 1rem; // pt-4
+      width: 100%;
+
+      .heart-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.5rem;
+
+        &.fill-current {
+          fill: currentColor;
+        }
+      }
+
+      @media (min-width: 640px) {
+        width: auto; // sm:w-auto
+      }
+    }
+  }
+}

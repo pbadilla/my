@@ -86,6 +86,9 @@ importers:
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
+      zustand:
+        specifier: ^5.0.8
+        version: 5.0.8(@types/react@18.3.24)(immer@10.1.1)(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
     devDependencies:
       '@rollup/rollup-linux-x64-gnu':
         specifier: ^4.48.0
@@ -141,6 +144,9 @@ importers:
       sass:
         specifier: ^1.80.4
         version: 1.90.0
+      strip-comments:
+        specifier: ^2.0.1
+        version: 2.0.1
       typescript:
         specifier: ^5.6.3
         version: 5.9.2
@@ -3797,6 +3803,10 @@ packages:
   strip-ansi@7.1.0:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
+
+  strip-comments@2.0.1:
+    resolution: {integrity: sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==}
+    engines: {node: '>=10'}
 
   strip-final-newline@2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
@@ -8414,6 +8424,8 @@ snapshots:
   strip-ansi@7.1.0:
     dependencies:
       ansi-regex: 6.2.0
+
+  strip-comments@2.0.1: {}
 
   strip-final-newline@2.0.0: {}
 

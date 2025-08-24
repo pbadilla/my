@@ -7,11 +7,15 @@ import Button from "@components/common/Button";
 import Logo from "@images/logo.svg";
 // import { getWishlist } from "@/lib/wishlist";
 
-import { FaHeart, FaMoon, FaSun } from "react-icons/fa";
+import { FaHeart, FaMoon, FaSun, FaArrowCircleLeft } from "react-icons/fa";
 
 import "@styles/header.scss";
 
-export const Header = () => {
+interface HeaderProps {
+  hasBackButton?: boolean;
+}
+
+export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
   const location = useLocation();
   const [wishlistCount, setWishlistCount] = useState(0);
   const { theme, toggleTheme } = useTheme();
@@ -38,8 +42,14 @@ export const Header = () => {
       <div className="header-container">
         <nav className="navbar">
           <Link to="/" className="brand">
+            {hasBackButton && (
+              <Button icon={<FaArrowCircleLeft className="icon" />}>
+                Back to Home
+              </Button>
+            )}
             <img src={Logo} alt="MyTheresa Logo" className="brand-icon" />
           </Link>
+
           <div className="nav-links">
             <Link to="/">
               <Button

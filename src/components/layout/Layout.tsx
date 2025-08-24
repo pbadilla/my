@@ -9,24 +9,23 @@ import "@styles/layout.scss";
 interface LayoutProps {
   children: ReactNode;
   hasHeroSection?: boolean;
-  hasCarrousels?: boolean;
+  hasBackButton?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   hasHeroSection,
-  hasCarrousels,
+  hasBackButton,
 }) => {
   return (
     <div className="layout">
-      <Header />
+      <Header hasBackButton={hasBackButton} />
 
       <main className="layout-main">
         {/* Hero Section */}
         {hasHeroSection && <Hero />}
 
-        {/* Carousels */}
-        {hasCarrousels && <div className="movie-sections">{children}</div>}
+        {children}
       </main>
 
       <Footer />

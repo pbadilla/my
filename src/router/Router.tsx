@@ -13,7 +13,7 @@ export const Router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/movie/:type/:id",
+    path: "/movie/:id",
     element: <Movie />,
     errorElement: <ErrorPage />,
   },

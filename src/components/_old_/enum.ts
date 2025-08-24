@@ -4,7 +4,7 @@ export interface Movie {
   poster_path: string;
 }
 
-export interface MovieApiResponse {
+export interface MoviesResponse {
   results: Movie[];
 }
 
