@@ -8,6 +8,7 @@ import Button from "@components/common/Button";
 import { MovieCard } from "@components/cards/MovieCard";
 
 import { useWishlist } from "@store/wishList";
+import { toast } from "react-toastify";
 
 const WishList: React.FC = () => {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ const WishList: React.FC = () => {
 
   console.log("Wishlist items:", items);
 
-  // Group movies by category
   const moviesByCategory = items.reduce<Record<string, typeof items>>(
     (acc, movie) => {
       const category = movie.category || "Uncategorized";
@@ -26,24 +26,32 @@ const WishList: React.FC = () => {
     {}
   );
 
+  const moviesByGenre = items.reduce<Record<string, Movie[]>>((acc, movie) => {
+    const genres = movie.genres?.length ? movie.genres : ["Uncategorized"];
+    genres.forEach((genre) => {
+      if (!acc[genre]) acc[genre] = [];
+      acc[genre].push(movie);
+    });
+    return acc;
+  }, {});
+
   const handleNavigate = (kindMovie: string, movieId: string) => {
     navigate(`/movie/${kindMovie}/${movieId}`);
   };
 
   const handleRemoveFromWishlist = (id: string, title: string) => {
     remove(id);
-    // Optional toast here if you want
-    // toast.info(`${title} removed from wishlist`);
+    toast.info(`${title} removed from wishlist`);
   };
 
   return (
     <Layout hasHeroSection={false} hasBackButton={true}>
       <div className="wishlist">
         <div className="container">
-          {Object.entries(moviesByCategory).length === 0 ? (
+          {Object.entries(moviesByGenre).length === 0 ? (
             <p>Your wishlist is empty.</p>
           ) : (
-            Object.entries(moviesByCategory).map(([category, movies]) => (
+            Object.entries(moviesByGenre).map(([category, movies]) => (
               <section key={category}>
                 <h2 className="wishlist-category">
                   {category} ({movies.length})

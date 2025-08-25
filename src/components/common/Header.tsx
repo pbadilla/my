@@ -19,37 +19,35 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
 
   const wishlistCount = useWishlist((state) => state.items.length);
 
-  console.log("Wishlist count:", wishlistCount);
-
   return (
     <header className="header">
       <div className="header-container">
         <nav className="navbar">
-          <Link to="/" className="brand">
+          <div className="brand-wrapper">
+            <Link to="/" className="brand-link">
+              <span className="brand-logo">
+                <LogoMytheresa />
+              </span>
+            </Link>
+
             {hasBackButton && (
-              <Button icon={<FaArrowCircleLeft className="icon" />}>
+              <Button
+                icon={<FaArrowCircleLeft className="icon" />}
+                className="brand-back-button"
+                onClick={() => window.history.back()}
+              >
                 Back to Home
               </Button>
             )}
-            <span className="brand-logo">
-              <LogoMytheresa />
-            </span>
-          </Link>
+          </div>
 
           <div className="nav-links">
             <Link to="/">
-              <Button
-                variant={location.pathname === "/" ? "default" : "ghost"}
-                className="nav-button"
-                text="Home"
-              />
+              <Button className="nav-button" text="Home" />
             </Link>
 
             <Link to="/wishlist">
               <Button
-                variant={
-                  location.pathname === "/wishlist" ? "wishlist" : "default"
-                }
                 className="nav-button"
                 text="Wishlist"
                 icon={

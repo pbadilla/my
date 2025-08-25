@@ -1,14 +1,11 @@
 .movie-details {
   min-height: 100vh;
   transition: all 0.5s;
-  &.bgClass {
-    // Placeholder for your dynamic background class
-  }
+
 
   .container {
-    max-width: 1280px;
     margin: 0 auto;
-    padding: 1.5rem 1rem; // px-4 py-6
+    padding: 1.5rem 0;
   }
 
   .back-button {

@@ -6,23 +6,58 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  height: 100px;
 }
 
 .header-container {
   margin: 0 auto;
-  padding: 1rem 1rem;
+  padding: 1rem 0 0 0;
+  max-width: 1400px;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .brand-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .brand-logo {
+    display: block;
+  }
   span.brand-logo {
     width: 20%;
+    max-height: 70px;
     svg {
       width: 100%;
       fill: var(--foreground);
       color: var(--foreground);
+    }
+  }
+  .brand-back-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    background: transparent;
+    border: 1px solid var(--foreground);
+    border-radius: 4px;
+    transition: background 0.2s;
+    svg {
+      fill: var(--foreground);
+      color: var(--foreground);
+    }
+
+    &:hover {
+      background: var(--foreground);
+      color: var(--background);
+      svg {
+        fill: var(--background);
+        color: var(--foreground);
+      }
     }
   }
 }

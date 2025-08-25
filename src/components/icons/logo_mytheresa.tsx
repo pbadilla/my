@@ -5,7 +5,6 @@ const LogoMytheresa = () => {
     <svg
       viewBox="0 0 7861 972"
       width="7.861in"
-      height="0.972in"
       aria-label="Logo of Mytheresa"
       role="img"
       xmlns="http://www.w3.org/2000/svg"

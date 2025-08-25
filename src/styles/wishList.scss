@@ -1,10 +1,9 @@
 .wishlist {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4); // adjust gradient as needed
 
   .container {
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
 
     .back-button {
       margin-bottom: 1.5rem;
@@ -71,6 +70,10 @@
 
         .movie-card-wrapper {
           position: relative;
+
+          button {
+            margin-top: 1rem;
+          }
 
           .remove-button {
             position: absolute;

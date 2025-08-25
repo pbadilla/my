@@ -16,19 +16,24 @@
 }
 
 .footer-text {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   color: var(--muted-foreground, #6b7280);
   font-family: 'Inter', sans-serif;
   width: 20%;
 
-  p {
-    font-size: 0.875rem;
+  span {
+    height: 50px;
+    svg {
+      width: 80%;
+      fill: var(--foreground);
+      color: var(--foreground);
+    }
   }
 
-  svg {
-    width: 100%;
-    fill: var(--foreground);
-    color: var(--foreground);
+  p {
+    font-size: 0.875rem;
   }
 
   a {
