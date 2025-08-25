@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <LogoMytheresa />
           </span>
           <p>
-            @ copyright 2024 myTheresa developed by{" "}
+            {`@2025 by `}
             <a href="https://github.com/pachibadilla">pachibadilla</a>
           </p>
         </div>

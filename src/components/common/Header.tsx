@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-
 import { useTheme } from "src/context/ThemeContext";
 
 import Button from "@components/common/Button";
-import Logo from "@images/logo.svg";
-// import { getWishlist } from "@/lib/wishlist";
+import LogoMytheresa from "@components/icons/logo_mytheresa";
 
 import { FaHeart, FaMoon, FaSun, FaArrowCircleLeft } from "react-icons/fa";
+import { useWishlist } from "@store/wishList";
 
 import "@styles/header.scss";
 
@@ -17,25 +15,11 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
   const location = useLocation();
-  const [wishlistCount, setWishlistCount] = useState(0);
   const { theme, toggleTheme } = useTheme();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    const updateWishlistCount = () => {
-      // setWishlistCount(getWishlist().length);
-    };
+  const wishlistCount = useWishlist((state) => state.items.length);
 
-    updateWishlistCount();
-
-    window.addEventListener("storage", updateWishlistCount);
-    window.addEventListener("wishlistUpdated", updateWishlistCount);
-
-    return () => {
-      window.removeEventListener("storage", updateWishlistCount);
-      window.removeEventListener("wishlistUpdated", updateWishlistCount);
-    };
-  }, [location]);
+  console.log("Wishlist count:", wishlistCount);
 
   return (
     <header className="header">
@@ -47,7 +31,9 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
                 Back to Home
               </Button>
             )}
-            <img src={Logo} alt="MyTheresa Logo" className="brand-icon" />
+            <span className="brand-logo">
+              <LogoMytheresa />
+            </span>
           </Link>
 
           <div className="nav-links">
@@ -66,7 +52,12 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
                 }
                 className="nav-button"
                 text="Wishlist"
-                icon={<FaHeart size={16} color="white" />}
+                icon={
+                  <FaHeart
+                    size={16}
+                    color={wishlistCount > 0 ? "red" : "white"}
+                  />
+                }
               >
                 {wishlistCount > 0 && (
                   <span className="wishlist-badge">{wishlistCount}</span>
@@ -79,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
               icon={theme === "light" ? <FaMoon /> : <FaSun />}
               onClick={toggleTheme}
               className="theme-toggle"
-            ></Button>
+            />
           </div>
         </nav>
       </div>

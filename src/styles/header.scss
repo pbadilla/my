@@ -17,6 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  span.brand-logo {
+    width: 20%;
+    svg {
+      width: 100%;
+      fill: var(--foreground);
+      color: var(--foreground);
+    }
+  }
 }
 
 .brand {
@@ -30,6 +38,7 @@
   display: block;
   width: 140px;
   height: 70px;
+  color: var(--foreground);
 }
 .brand-title {
   font-size: 1.5rem;
@@ -60,18 +69,25 @@
 
 .wishlist-badge {
   position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
+  top: 1.5rem;
+  right: 4.5rem;
   background: var(--destructive);
   color: var(--destructive-foreground);
   font-size: 0.75rem;
   border-radius: 9999px;
-  width: 1.25rem;
+  min-width: 1.25rem;
   height: 1.25rem;
+  padding: 0 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: glow-pulse 1.5s infinite;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wishlist-badge {
+    animation: glow-pulse 1.5s infinite;
+  }
 }
 
 /* Animations */

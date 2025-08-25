@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { Header } from "@components/header/Header";
+import { Header } from "@components/common/Header";
 import Hero from "@components/common/Hero";
 import Footer from "@components/common/Footer";
 

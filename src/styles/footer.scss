@@ -19,7 +19,7 @@
   text-align: center;
   color: var(--muted-foreground, #6b7280);
   font-family: 'Inter', sans-serif;
-  width: 50%;;
+  width: 20%;
 
   p {
     font-size: 0.875rem;
@@ -27,10 +27,12 @@
 
   svg {
     width: 100%;
+    fill: var(--foreground);
+    color: var(--foreground);
   }
 
   a {
-    color: inherit; /* same muted color */
+    color: var(--color-action);
     text-decoration: none;
 
     &:hover {

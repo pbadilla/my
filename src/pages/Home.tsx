@@ -2,7 +2,7 @@ import React from "react";
 
 import Layout from "@components/layout/Layout";
 
-import MovieCarousel from "@components/carousel/MovieCarrousel";
+import MovieCarousel from "@components/carousel/Carrousel";
 
 const Home: React.FC = () => {
   return (

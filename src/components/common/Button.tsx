@@ -20,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   id,
   variant = "default",
   size = "md",
+  children,
 }) => {
   const buttonClass = `button button--${variant} button--${size} ${className}`;
 
@@ -27,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
     <button type="button" id={id} className={buttonClass} onClick={onClick}>
       {icon && <span className="button-icon">{icon}</span>}
       {text && <span className="button-text">{text}</span>}
+      {children}
     </button>
   );
 };

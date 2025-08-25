@@ -1,6 +1,6 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovie } from "@utils/fetchMovies";
+import { fetchMovie } from "../services/fetchMovies";
 import type { Movie } from "../types/movies";
 import Layout from "@components/layout/Layout";
 import Button from "@components/common/Button";
@@ -8,26 +8,22 @@ import Card from "@components/common/Card";
 
 import { FaStar, FaCalendar, FaClock, FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
-import { addToWishlist, isInWishlist } from "@utils/wishList";
+import { useWishlist } from "@store/wishList";
+
+import { getTmdbImage } from "@utils/tmdb";
 
 import "@styles/movieDetails.scss";
-import { getTmdbImage } from "@utils/tmdb";
 
 const MoviePage = () => {
   const { id: idMovie } = useParams<{ id: string }>();
 
-  const [movieData, setMovieData] = useState<Movie | null>(null);
-  const [inWishlist, setInWishlist] = useState(false);
+  // ✅ Zustand store
+  const { add } = useWishlist();
+  const inWishlist = useWishlist((state) => state.isInWishlist(idMovie || ""));
 
-  useEffect(() => {
-    if (idMovie) {
-      setInWishlist(isInWishlist(idMovie));
-    }
-  }, [idMovie]);
-
+  // ✅ Fetch movie from API
   const {
-    data: movie,
+    data: movieData,
     isLoading,
     isError,
     error,
@@ -38,29 +34,20 @@ const MoviePage = () => {
     enabled: Boolean(idMovie),
   });
 
-  // ✅ hook stays at top level, updates local state
-  useEffect(() => {
-    if (movie) {
-      setMovieData(movie);
-    }
-    console.log("movie", movie);
-  }, [movie]);
-
+  // ✅ Wishlist handler
   const handleAddToWishlist = () => {
     if (!idMovie || !movieData) return;
 
-    const success = addToWishlist(movieData);
-
-    if (success) {
-      setInWishlist(true);
-      window.dispatchEvent(new Event("wishlistUpdated"));
-      toast.success(`${movieData.title} has been added to your wishlist!`);
-    } else {
+    if (inWishlist) {
       toast.info(`${movieData.title} is already in your wishlist.`);
+      return;
     }
+
+    add(movieData);
+    toast.success(`${movieData.title} has been added to your wishlist!`);
   };
 
-  // ✅ handle loading / error states after hooks
+  // ✅ Handle loading / error states
   if (!idMovie) return <p>No movie ID provided</p>;
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{(error as Error).message}</p>;

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovies } from "@utils/fetchMovies";
+import { fetchMovies } from "../../services/fetchMovies";
 import type { MoviesResponse } from "../../types/movies";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MovieCard } from "@components/cards/MovieCard";
@@ -54,6 +54,9 @@ export const MovieCarousel = ({ type, title }: MovieCarouselProps) => {
     if (newMovies.length > 0) {
       addMovies(newMovies);
     }
+
+    console.log("Movies in carousel:", moviesResponse.results);
+    console.log("Cached movies:", cachedMovies);
   }, [moviesResponse, cachedMovies, addMovies]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);

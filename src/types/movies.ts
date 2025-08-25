@@ -1,25 +1,29 @@
+export type MovieTypes = "popular" | "top_rated" | "upcoming";
+
 export interface Movie {
   id: string;
-  backdrop_path?: string;
-  category?: 'action' | 'drama' | 'comedy';
-  description: string;
-  duration: number;
-  genres?: { name: string }[];
-  homepage?: string;
-  original_title?: string;
-  popularity?: number;
-  posterUrl: string;
-  production_companies?: { name: string; origin_country: string }[];
-  rating: number;
   title: string;
-  type?: MovieTypes;
+  description: string;
   year: number;
+  duration: number;
+  category?: "action" | "drama" | "comedy";
+  type?: MovieTypes;
+  posterUrl: string;
+  poster_path?: string | null;
+  backdrop_path?: string | null;
+  genres?: string[] | { name: string }[];
+  rating?: number;
+  vote_average?: number;
+  popularity?: number;
+  original_title?: string;
+  homepage?: string;
+  production_companies?: { name: string; origin_country: string }[];
 }
 
 export interface MovieCarouselProps {
   title: string;
   movies: Movie[];
-  category: Movie['category'];
+  category: Movie["category"];
 }
 
 export interface MoviesResponse {
@@ -28,4 +32,10 @@ export interface MoviesResponse {
   total_pages: number;
   total_results: number;
 }
-export type MovieTypes = 'popular' | 'top_rated' | 'upcoming';
+
+
+export interface MovieCardProps {
+  movie: Movie;
+  type?: string;
+  onClick?: () => void;
+}
