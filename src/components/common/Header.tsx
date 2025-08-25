@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTheme } from "src/context/ThemeContext";
 
 import Button from "@components/common/Button";
@@ -14,7 +14,6 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
-  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
 
   const wishlistCount = useWishlist((state) => state.items.length);
@@ -49,18 +48,20 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
             <Link to="/wishlist">
               <Button
                 className="nav-button"
-                text="Wishlist"
+                text={`Wishlist ${
+                  wishlistCount > 0 ? `(${wishlistCount})` : ""
+                }`}
                 icon={
                   <FaHeart
                     size={16}
-                    color={wishlistCount > 0 ? "red" : "white"}
+                    className={
+                      wishlistCount > 0
+                        ? "wishlist-icon--active"
+                        : "wishlist-icon"
+                    }
                   />
                 }
-              >
-                {wishlistCount > 0 && (
-                  <span className="wishlist-badge">{wishlistCount}</span>
-                )}
-              </Button>
+              />
             </Link>
 
             {/* Theme Switch */}

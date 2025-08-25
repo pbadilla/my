@@ -12,8 +12,6 @@ import "../../styles/movieCard.scss";
 import { getCategoryClass } from "@utils/getCategories";
 
 export const MovieCard = ({ movie, type }: MovieCardProps) => {
-  console.log("Rendering MovieCard for movie:", movie);
-
   return (
     <Link to={`/movie/${movie.id}`} className="movie-card-link">
       <Card className={`movie-card ${getCategoryClass(type, "movie-card")}`}>
@@ -22,6 +20,10 @@ export const MovieCard = ({ movie, type }: MovieCardProps) => {
             src={getTmdbImage(movie.backdrop_path || movie.poster_path)}
             alt={movie.title}
             loading="lazy"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = "/placeholder.png";
+            }}
+            className="poster-image"
           />
           <div className="movie-card__overlay" />
 

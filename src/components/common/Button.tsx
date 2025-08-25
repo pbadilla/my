@@ -3,6 +3,7 @@ import "@styles/button.scss";
 
 type ButtonProps = {
   children?: React.ReactNode;
+  disabled?: boolean;
   text?: string;
   id?: string;
   icon?: React.ReactNode;
@@ -14,6 +15,7 @@ type ButtonProps = {
 
 const Button: React.FC<ButtonProps> = ({
   text,
+  disabled = false,
   icon,
   onClick,
   className = "",
@@ -25,7 +27,13 @@ const Button: React.FC<ButtonProps> = ({
   const buttonClass = `button button--${variant} button--${size} ${className}`;
 
   return (
-    <button type="button" id={id} className={buttonClass} onClick={onClick}>
+    <button
+      type="button"
+      id={id}
+      className={buttonClass}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {icon && <span className="button-icon">{icon}</span>}
       {text && <span className="button-text">{text}</span>}
       {children}

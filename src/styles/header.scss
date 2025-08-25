@@ -119,6 +119,17 @@
   line-height: 1;
 }
 
+.button-icon {
+  svg {
+    &.wishlist-icon {
+      fill: white;
+    }
+    &.wishlist-icon--active {
+      fill: red;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .wishlist-badge {
     animation: glow-pulse 1.5s infinite;

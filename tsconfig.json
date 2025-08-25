@@ -29,12 +29,12 @@
       "@types/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"]
     },
-    "types": ["vite/client", "node", "vitest"],
+    "types": ["vite/client", "node", "vitest", "vitest/globals", "@testing-library/jest-dom"],
     "declaration": true,
     "declarationDir": "./dist/types", 
     "outDir": "./dist",  
   },
-  "include": ["src/**/*"], 
+  "include": ["src/**/*", "test/e2e", "test/unit", "../pruebas/movi-magic/test/wishlist.tsx"], 
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

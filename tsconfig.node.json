@@ -23,6 +23,6 @@
     "declarationDir": "./dist/types",
     "jsx": "react-jsx"
   },
-  "include": ["server.ts", "src/**/*"],
+  "include": ["server.ts", "src/**/*", "test/e2e", "test/unit", "../pruebas/movi-magic/test/wishlist.tsx"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.test.tsx"]
 }

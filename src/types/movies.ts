@@ -16,6 +16,9 @@ export interface Movie {
   vote_average?: number;
   popularity?: number;
   original_title?: string;
+  overview?: string;
+  runtime?: number;
+  release_date?: string;
   homepage?: string;
   production_companies?: { name: string; origin_country: string }[];
 }

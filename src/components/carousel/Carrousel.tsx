@@ -6,8 +6,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MovieCard } from "@components/cards/MovieCard";
 import { getCategoryClass } from "@utils/getCategories";
 import { useMoviesStore } from "@store/moviesStore";
-import "@styles/movieCarrousel.scss";
+
 import { toast } from "react-toastify";
+
+import "@styles/movieCarrousel.scss";
 
 interface MovieCarouselProps {
   type: string;
@@ -74,8 +76,9 @@ export const MovieCarousel = ({ type, title }: MovieCarouselProps) => {
     });
   };
 
-  if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error loading movies</p>;
+
+  const skeletonKeys = Array.from({ length: 5 }, (_, i) => `skeleton-${i}`);
 
   return (
     <section className="section-movies">
@@ -107,11 +110,15 @@ export const MovieCarousel = ({ type, title }: MovieCarouselProps) => {
       </div>
 
       <div ref={scrollContainerRef} className="movies-scroll">
-        {moviesResponse?.results?.map((movie) => (
-          <div key={movie.id} className="movie-card-wrapper">
-            <MovieCard movie={movie} type={type} />
-          </div>
-        ))}
+        {isLoading
+          ? skeletonKeys.map((key) => (
+              <div key={key} className="movie-card-wrapper skeleton-card" />
+            ))
+          : moviesResponse?.results?.map((movie) => (
+              <div key={movie.id} className="movie-card-wrapper">
+                <MovieCard movie={movie} type={type} />
+              </div>
+            ))}
       </div>
     </section>
   );
