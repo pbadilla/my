@@ -1,4 +1,3 @@
-// store/wishlist.ts
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Movie } from "../types/movies";
@@ -25,3 +24,8 @@ export const useWishlist = create<WishlistState>()(
     { name: "wishlist-storage" }
   )
 );
+
+// For Playwright tests
+export const __setWishlistForTests = (movies: Movie[]) => {
+  useWishlist.setState({ items: movies });
+};

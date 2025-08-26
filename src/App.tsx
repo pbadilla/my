@@ -1,13 +1,17 @@
 import { RouterProvider } from "react-router-dom";
-// import { Provider } from "react-redux";
-// import { PersistGate } from "redux-persist/integration/react";
+import { useWishlist } from "@store/wishList";
+
+if (typeof window !== "undefined") {
+  (window as any).__setWishlistForTests = (movies: any[]) => {
+    useWishlist.setState({ items: movies });
+  };
+}
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@store/queryClient";
 
 import { ThemeProvider } from "../src/context/ThemeContext";
 
-// import store, { persistor } from "@store/store";
 import { Router } from "./router/Router";
 
 import { ToastContainer } from "react-toastify";

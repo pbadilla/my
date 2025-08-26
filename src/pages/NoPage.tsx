@@ -2,9 +2,10 @@ import "@styles/noPage.scss";
 
 import noFavouritesImg from "@images/noFavourites.png";
 
+
 const NoPage = () => {
   return (
-    <div className="no-page">
+    <div className="no-page" data-testid="no-page">
       <div className="no-page-content">
         <h1 className="no-page-title">Ops!!!</h1>
         <img
