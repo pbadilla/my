@@ -1,8 +1,15 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Wishlist Page", () => {
+test.describe("Wishlist Page (fast, mocked)", () => {
+  // Preload empty wishlist for each test by default
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("wishlist", JSON.stringify([]));
+    });
+  });
+
   test("should show NoPage when wishlist is empty", async ({ page }) => {
-    await page.goto("/wishlist");
+    await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
 
     // Expect the NoPage component to render
     await expect(page.getByTestId("no-page")).toBeVisible();
@@ -10,8 +17,7 @@ test.describe("Wishlist Page", () => {
   });
 
   test("should display movies in wishlist", async ({ page }) => {
-    // 🛠 You’ll likely want to preload state with one movie.
-    // Example: If your zustand store persists in localStorage
+    // Preload a movie into wishlist
     await page.addInitScript(() => {
       localStorage.setItem(
         "wishlist",
@@ -26,7 +32,7 @@ test.describe("Wishlist Page", () => {
       );
     });
 
-    await page.goto("/wishlist");
+    await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
 
     // Verify the movie card is visible
     await expect(page.getByText("Inception")).toBeVisible();
@@ -35,6 +41,7 @@ test.describe("Wishlist Page", () => {
   });
 
   test("should remove a movie from wishlist", async ({ page }) => {
+    // Preload a movie into wishlist
     await page.addInitScript(() => {
       localStorage.setItem(
         "wishlist",
@@ -49,7 +56,7 @@ test.describe("Wishlist Page", () => {
       );
     });
 
-    await page.goto("/wishlist");
+    await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
 
     const removeButton = page.getByRole("button", { name: "Remove" });
 

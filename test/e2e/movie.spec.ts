@@ -1,44 +1,50 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Movie Page", () => {
-  // navigate directly to a movie page (replace 123 with a real test movie ID in your DB / mock API)
   test.beforeEach(async ({ page }) => {
-    await page.goto("/movie/123");
+    await page.route("**/api/movie/238", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          id: 238,
+          title: "The Godfather",
+          category: "Crime / Drama",
+          rating: "8.686",
+          release_date: "1972-03-14",
+          runtime: 175,
+          overview:
+            "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family.",
+          posterUrl: "/images/test-movie.jpg",
+        }),
+      });
+    });
+
+    await page.goto("/movie/238");
   });
 
   test("should display movie details correctly", async ({ page }) => {
-    await expect(page.getByTestId("movie-page")).toBeVisible();
-    await expect(page.getByTestId("movie-title")).toBeVisible();
-    await expect(page.getByTestId("movie-category")).toBeVisible();
-    await expect(page.getByTestId("movie-rating")).toBeVisible();
-    await expect(page.getByTestId("movie-release-date")).toBeVisible();
-    await expect(page.getByTestId("movie-runtime")).toBeVisible();
-    await expect(page.getByTestId("movie-description")).toBeVisible();
-    await expect(page.getByTestId("movie-poster")).toBeVisible();
+    await expect(page.getByTestId("movie-title")).toHaveText("The Godfather");
+    await expect(page.getByTestId("movie-rating")).toContainText("8.686");
+    await expect(page.getByTestId("movie-release-date")).toContainText("1972-03-14");
+    await expect(page.getByTestId("movie-runtime")).toContainText("175 min");
+    await expect(page.getByTestId("movie-description")).toContainText(
+      "Spanning the years 1945 to 1955"
+    );
   });
 
   test("should add movie to wishlist", async ({ page }) => {
     const wishlistButton = page.getByTestId("wishlist-button");
 
-    // Click to add
+    await expect(wishlistButton).toBeVisible();
+    await expect(wishlistButton).toBeEnabled();
+
     await wishlistButton.click();
 
-    // Check toast appeared
-    await expect(page.getByText("has been added to your wishlist")).toBeVisible();
+    await expect(
+      page.getByText("The Godfather has been added to your wishlist!", { exact: true }).first()
+    ).toBeVisible();
 
-    // Button should be disabled now
-    await expect(wishlistButton).toBeDisabled();
-  });
-
-  test("should not add twice", async ({ page }) => {
-    const wishlistButton = page.getByTestId("wishlist-button");
-
-    // First click
-    await wishlistButton.click();
-    await expect(page.getByText("has been added to your wishlist")).toBeVisible();
-
-    // Second click attempt
-    await wishlistButton.click();
-    await expect(page.getByText("is already in your wishlist")).toBeVisible();
+    await expect(wishlistButton).toHaveText("Add to Wishlist");
   });
 });

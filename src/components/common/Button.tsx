@@ -11,6 +11,7 @@ type ButtonProps = {
   className?: string;
   variant?: "default" | "ghost" | "action" | "drama" | "comedy" | "wishlist";
   size?: "sm" | "md" | "lg" | "xl" | "icon";
+  dataTestId?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -23,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = "default",
   size = "md",
   children,
+  dataTestId,
 }) => {
   const buttonClass = `button button--${variant} button--${size} ${className}`;
 
@@ -33,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
       className={buttonClass}
       onClick={onClick}
       disabled={disabled}
+      data-testid={dataTestId}
     >
       {icon && <span className="button-icon">{icon}</span>}
       {text && <span className="button-text">{text}</span>}

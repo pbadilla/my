@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { FaStar, FaCalendar, FaClock, FaHeart } from "react-icons/fa";
 
 import { fetchMovie } from "../services/fetchMovies";
 import type { Movie } from "../types/movies";
@@ -13,16 +12,19 @@ import Layout from "@components/layout/Layout";
 import Button from "@components/common/Button";
 import Card from "@components/common/Card";
 
-import "@styles/movieDetails.scss";
 import Loading from "@pages/Loading";
 import NotFound from "@pages/NotFound";
 import ErrorPage from "@pages/Error";
 
+import { FaStar, FaCalendar, FaClock, FaHeart } from "react-icons/fa";
+
+import "@styles/movieDetails.scss";
+
 const MoviePage = () => {
   const { id: idMovie } = useParams<{ id: string }>();
 
-  const { add } = useWishlist();
-  const inWishlist = useWishlist((state) => state.isInWishlist(idMovie || ""));
+  const { add, isInWishlist } = useWishlist();
+  const inWishlist = isInWishlist(idMovie || "");
 
   const {
     data: movieData,
@@ -39,8 +41,8 @@ const MoviePage = () => {
   const handleAddToWishlist = () => {
     if (!idMovie || !movieData) return;
 
-    if (inWishlist) {
-      toast.info(`${movieData.title} is already in your wishlist.`);
+    if (isInWishlist(idMovie)) {
+      toast.info(`${movieData.title} is already in your wishlist!`);
       return;
     }
 
@@ -50,14 +52,15 @@ const MoviePage = () => {
 
   if (!idMovie) return <ErrorPage message="No movie ID provided" />;
   if (isError) return <ErrorPage message={(error as Error).message} />;
-  if (!movieData) return <NotFound />;
   if (isLoading) return <Loading />;
+  if (!movieData) return <NotFound />;
 
   return (
     <Layout hasHeroSection={false} hasBackButton={true}>
       <div className="movie-details" data-testid="movie-page">
         <div className="container">
           <div className="grid">
+            {/* Poster */}
             <div className="poster" data-testid="movie-poster">
               <Card>
                 <img
@@ -67,6 +70,7 @@ const MoviePage = () => {
               </Card>
             </div>
 
+            {/* Details */}
             <div className="details" data-testid="movie-details">
               <div>
                 <div className="category" data-testid="movie-category">
@@ -92,14 +96,16 @@ const MoviePage = () => {
                 </div>
               </div>
 
+              {/* Description */}
               <div className="description" data-testid="movie-description">
                 <h2 className="title">Description</h2>
                 <p>{movieData.overview}</p>
               </div>
 
+              {/* Wishlist button */}
               <div className="wishlist-button">
                 <Button
-                  data-testid="wishlist-button"
+                  dataTestId="wishlist-button"
                   onClick={handleAddToWishlist}
                   disabled={inWishlist}
                   icon={<FaHeart />}

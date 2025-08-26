@@ -56,6 +56,7 @@ const WishList: React.FC = () => {
                       handleRemoveFromWishlist(movie.id, movie.title)
                     }
                     text="Remove"
+                    dataTestId="remove-wishlist-button"
                   />
                 </div>
               ))}

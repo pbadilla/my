@@ -34,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
                 icon={<FaArrowCircleLeft className="icon" />}
                 className="brand-back-button"
                 onClick={() => window.history.back()}
+                dataTestId="back-button"
               >
                 Back to Home
               </Button>
@@ -42,12 +43,25 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
 
           <div className="nav-links">
             <Link to="/">
-              <Button className="nav-button" text="Home" />
+              <Button
+                className="nav-button"
+                text="Home"
+                dataTestId="home-button"
+              />
+            </Link>
+
+            <Link to="/movies">
+              <Button
+                className="nav-button"
+                text="Movies"
+                dataTestId="movies-button"
+              />
             </Link>
 
             <Link to="/wishlist">
               <Button
                 className="nav-button"
+                dataTestId="wishlist-button-header"
                 text={`Wishlist ${
                   wishlistCount > 0 ? `(${wishlistCount})` : ""
                 }`}
@@ -69,6 +83,7 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
               icon={theme === "light" ? <FaMoon /> : <FaSun />}
               onClick={toggleTheme}
               className="theme-toggle"
+              dataTestId="theme-toggle-button"
             />
           </div>
         </nav>
