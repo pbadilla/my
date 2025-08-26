@@ -6,7 +6,7 @@ export default defineConfig({
     baseURL: 'http://localhost:3000',
   },
   webServer: {
-    command: 'vite preview --port 3000',
+    command: 'vite build && vite preview --port 3000',
     port: 3000,
     reuseExistingServer: true,
   },

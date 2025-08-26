@@ -7,7 +7,6 @@ import { fetchMovie } from "../services/fetchMovies";
 import type { Movie } from "../types/movies";
 
 import { useWishlist } from "@store/wishList";
-
 import { getTmdbImage } from "@utils/tmdb";
 
 import Layout from "@components/layout/Layout";
@@ -51,19 +50,15 @@ const MoviePage = () => {
 
   if (!idMovie) return <ErrorPage message="No movie ID provided" />;
   if (isError) return <ErrorPage message={(error as Error).message} />;
-
   if (!movieData) return <NotFound />;
-
   if (isLoading) return <Loading />;
-
-  console.log("movieData:", movieData);
 
   return (
     <Layout hasHeroSection={false} hasBackButton={true}>
-      <div className="movie-details">
+      <div className="movie-details" data-testid="movie-page">
         <div className="container">
           <div className="grid">
-            <div className="poster">
+            <div className="poster" data-testid="movie-poster">
               <Card>
                 <img
                   src={getTmdbImage(movieData.posterUrl) || "/placeholder.svg"}
@@ -72,34 +67,39 @@ const MoviePage = () => {
               </Card>
             </div>
 
-            <div className="details">
+            <div className="details" data-testid="movie-details">
               <div>
-                <div className="category">{movieData.category}</div>
-                <h1 className="title">{movieData.title}</h1>
+                <div className="category" data-testid="movie-category">
+                  {movieData.category}
+                </div>
+                <h1 className="title" data-testid="movie-title">
+                  {movieData.title}
+                </h1>
 
-                <div className="meta">
-                  <div className="meta-item">
+                <div className="meta" data-testid="movie-meta">
+                  <div className="meta-item" data-testid="movie-rating">
                     <FaStar className="icon fill-primary" />
                     <span>{movieData.rating}</span>
                   </div>
-                  <div className="meta-item">
+                  <div className="meta-item" data-testid="movie-release-date">
                     <FaCalendar className="icon" />
                     <span>{movieData.release_date}</span>
                   </div>
-                  <div className="meta-item">
+                  <div className="meta-item" data-testid="movie-runtime">
                     <FaClock className="icon" />
                     <span>{movieData.runtime} min</span>
                   </div>
                 </div>
               </div>
 
-              <div className="description">
+              <div className="description" data-testid="movie-description">
                 <h2 className="title">Description</h2>
                 <p>{movieData.overview}</p>
               </div>
 
               <div className="wishlist-button">
                 <Button
+                  data-testid="wishlist-button"
                   onClick={handleAddToWishlist}
                   disabled={inWishlist}
                   icon={<FaHeart />}

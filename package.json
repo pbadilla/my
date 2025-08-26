@@ -14,8 +14,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "test_e2e": "npx playwright test src/tests/e2e --workers=2",
-    "test_e2e:view": "npx playwright test src/tests/e2e --headed"
+    "test:e2e": "pnpm run build && playwright test",
+    "test_e2e:view": "npx playwright test test/e2e --headed"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
