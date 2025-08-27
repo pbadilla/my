@@ -1,16 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
+
+import { useWishlist } from "@store/wishList";
+
+import NoPage from "@pages/NoPage";
 
 import Layout from "@components/layout/Layout";
 import Button from "@components/common/Button";
 import { MovieCard } from "@components/cards/MovieCard";
 
-import { useWishlist } from "@store/wishList";
-import { toast } from "react-toastify";
+import { FaTrash } from "react-icons/fa";
 
 import "@styles/wishList.scss";
-import NoPage from "@pages/NoPage";
 
 const WishList: React.FC = () => {
   const navigate = useNavigate();
