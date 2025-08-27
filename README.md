@@ -27,7 +27,7 @@ Jest, react-testing-library, vitest
 
  Playwright
 
-## How to us it
+## How to use it
 
 To start the project you have to Clone this repository into your local
 
@@ -71,18 +71,14 @@ In order to run the tests, you need to install the following packages:
 To run tests, run the following command
 
 ```bash
-   yarn run test_e2e or npm run test_e2e
-   yarn run test_e2e:view or npm run test_e2e:view
-    "test_e2e:view": "npx playwright test src/tests/e2e --headed"
+  yarn run test_e2e or npm run test_e2e
+  yarn run test_e2e:view or npm run test_e2e:view
+  "test_e2e:view": "npx playwright test src/tests/e2e --headed"
 ```
 
 ## SSR
 
 Using VITE is not possible to do a SSR although I've create a AppServer file to introduce it to the project. (It could a better idea use another tool like NEXT for example)
-
-## Authors
-
-- [@pbadilla](https://www.github.com/pbadilla)
 
 ## API Reference
 
@@ -104,3 +100,7 @@ Using a i18n tool to create different languages
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+## Authors
+
+- [@pbadilla](https://www.github.com/pbadilla)
