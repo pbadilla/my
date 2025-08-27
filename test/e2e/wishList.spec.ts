@@ -1,12 +1,17 @@
 import { test, expect } from "@playwright/test";
 
+import { minimalMovie } from '../../src/utils/minimalMovie';
+
 test.describe("Wishlist Page (fast, mocked)", () => {
 
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {
       localStorage.setItem(
         "wishlist-storage",
-        JSON.stringify({ state: { items: [] }, version: 0 })
+        JSON.stringify({
+          state: { items: [] },
+          version: 0,
+        })
       );
     });
   });
@@ -21,85 +26,57 @@ test.describe("Wishlist Page (fast, mocked)", () => {
   });
 
   test("should display movies in wishlist", async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem(
-      "wishlist-storage",
-      JSON.stringify({
-        state: {
-          items: [
-            {
-              id: "123",
-              title: "Inception",
-              category: "Sci-Fi",
-              posterUrl: "/test-inception.jpg",
-            },
-          ],
-        },
-        version: 0,
-      })
-    );
+    const inception = minimalMovie({
+      id: 123,
+      title: "Inception",
+      posterUrl: "/test-inception.jpg",
+      genres: ["Sci-Fi", "Thriller"],
+    });
+
+    await page.addInitScript((movie) => {
+      localStorage.setItem(
+        "wishlist-storage",
+        JSON.stringify({ state: { items: [movie] }, version: 0 })
+      );
+    }, inception);
+
+    await page.goto("/wishlist");
+
+    await expect(page.getByText("Inception")).toBeVisible({ timeout: 10000 });
   });
 
-  await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
+  test("should remove a movie from wishlist", async ({ page }) => {
+    // Preload the movie into localStorage using the helper
+    const darkKnight = minimalMovie({
+      id: 456,
+      title: "The Dark Knight",
+      posterUrl: "/test-tdk.jpg",
+      genres: ["Action"],
+    });
 
-  await expect(page.getByText("Inception")).toBeVisible({ timeout: 10000 });
-});
+    await page.addInitScript((movie) => {
+      localStorage.setItem(
+        "wishlist-storage",
+        JSON.stringify({ state: { items: [movie] }, version: 0 })
+      );
+    }, darkKnight);
 
-  // test("should display movies in wishlist", async ({ page }) => {
-  //   await page.addInitScript(() => {
-  //     (window as any).__wishlistSeed__ = [
-  //       {
-  //         id: "123",
-  //         title: "Inception",
-  //         category: "Sci-Fi",
-  //         posterUrl: "/test-inception.jpg",
-  //       },
-  //     ];
-  //   });
+    await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
 
-  //   await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
+    // Locate the remove button for this movie
+    const removeButton = page.getByTestId("remove-wishlist-button");
+    await expect(removeButton).toBeVisible();
 
-  //   await page.evaluate(() => {
-  //     if ((window as any).__wishlistSeed__) {
-  //       (window as any).__setWishlistForTests((window as any).__wishlistSeed__);
-  //     }
-  //   });
+    await removeButton.click();
 
-  //   await expect(page.getByText("Inception")).toBeVisible();
-  // });
+    // Verify the "removed" toast/message appears
+    await expect(
+      page.getByText("The Dark Knight removed from wishlist").first()
+    ).toBeVisible({ timeout: 5000 });
 
-  // test("should remove a movie from wishlist", async ({ page }) => {
-  //   // Preload a movie into persisted store
-  //   await page.addInitScript(() => {
-  //     localStorage.setItem(
-  //       "wishlist-storage",
-  //       JSON.stringify({
-  //         state: {
-  //           items: [
-  //             {
-  //               id: "456",
-  //               title: "The Dark Knight",
-  //               category: "Action",
-  //               posterUrl: "/test-tdk.jpg",
-  //             },
-  //           ],
-  //         },
-  //         version: 0,
-  //       })
-  //     );
-  //   });
+    // Verify that the "NoPage" placeholder is visible now
+    await expect(page.getByTestId("no-page")).toBeVisible();
+  });
 
-  //   await page.goto("/wishlist", { waitUntil: "domcontentloaded" });
 
-  //   const removeButton = page.getByTestId("remove-wishlist-button");
-  //   await expect(removeButton).toBeVisible();
-
-  //   await removeButton.click();
-
-  //   await expect(
-  //     page.getByText("The Dark Knight removed from wishlist")
-  //   ).toBeVisible();
-
-  //   await expect(page.getByTestId("no-page")).toBeVisible();
-  // });
 });
