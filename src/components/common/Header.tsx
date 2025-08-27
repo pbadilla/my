@@ -1,11 +1,15 @@
+import { FaHeart, FaMoon, FaSun, FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 import { useTheme } from "src/context/ThemeContext";
+
+import { useWishlist } from "@store/wishList";
+
+import { useCurrentPage } from "@hooks/useCurrentPage";
 
 import Button from "@components/common/Button";
 import LogoMytheresa from "@components/icons/logo_mytheresa";
-
-import { FaHeart, FaMoon, FaSun, FaArrowCircleLeft } from "react-icons/fa";
-import { useWishlist } from "@store/wishList";
+import { LanguageSelector } from "@components/flags/LanguageSelector";
 
 import "@styles/header.scss";
 
@@ -17,6 +21,8 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
   const { theme, toggleTheme } = useTheme();
 
   const wishlistCount = useWishlist((state) => state.items.length);
+
+  const { path, title } = useCurrentPage();
 
   return (
     <header className="header">
@@ -33,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
               <Button
                 icon={<FaArrowCircleLeft className="icon" />}
                 className="brand-back-button"
-                onClick={() => window.history.back()}
+                onClick={() => (window.location.href = "/")}
                 dataTestId="back-button"
               >
                 Back to Home
@@ -78,7 +84,8 @@ export const Header: React.FC<HeaderProps> = ({ hasBackButton }) => {
               />
             </Link>
 
-            {/* Theme Switch */}
+            <LanguageSelector />
+
             <Button
               icon={theme === "light" ? <FaMoon /> : <FaSun />}
               onClick={toggleTheme}

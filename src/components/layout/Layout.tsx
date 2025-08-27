@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 
-import { Header } from "@components/common/Header";
-import Hero from "@components/common/Hero";
 import Footer from "@components/common/Footer";
+import Hero from "@components/common/Hero";
+import { Header } from "@components/common/Header";
 
 import "@styles/layout.scss";
 
@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({
       <Header hasBackButton={hasBackButton} />
 
       <main className="layout-main">
-        {/* Hero Section */}
+        {}
         {hasHeroSection && <Hero />}
 
         {children}

@@ -11,8 +11,8 @@ const Delete: React.FC<DeleteProps> = ({ onClick }) => {
       height="21" 
       viewBox="0 0 16 21" 
       fill="none" 
-      xmlns="http://www.w3.org/2000/svg" 
-      onClick={onClick} // Ensure you handle the click
+      xmlns="http:
+      onClick={onClick} 
     >
       <path 
         d="M2.89999 4.755V19.085C2.89999 19.365 3.11999 19.585 3.39999 19.585H13.4C13.68 19.585 13.9 19.365 13.9 19.085V4.755" 

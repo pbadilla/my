@@ -1,9 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'
-import App from './App';
 import { ToastContainer } from 'react-toastify';
 
-// Hydrate the application on the client side
+import App from './App';
+
+import ReactDOM from 'react-dom/client'
+
+
+
+
 const root = ReactDOM.hydrateRoot(
   document.getElementById('root')!,
   <React.StrictMode>

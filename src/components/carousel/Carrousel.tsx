@@ -1,15 +1,17 @@
-import { useRef, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { fetchMovies } from "../../services/fetchMovies";
-import type { MoviesResponse } from "../../types/movies";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { MovieCard } from "@components/cards/MovieCard";
-import { getCategoryClass } from "@utils/getCategories";
+import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+import { useRef, useEffect } from "react";
+
 import { useMoviesStore } from "@store/moviesStore";
 
-import { toast } from "react-toastify";
+import { MovieCard } from "@components/cards/MovieCard";
 
 import "@styles/movieCarrousel.scss";
+
+import type { MoviesResponse } from "../../types/movies";
+import { fetchMovies } from "../../services/fetchMovies";
+import { getCategoryClass } from "@utils/getCategories";
 
 interface MovieCarouselProps {
   type: string;
@@ -65,7 +67,7 @@ export const MovieCarousel = ({ type, title }: MovieCarouselProps) => {
 
   const scroll = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return;
-    const scrollAmount = 320; // card width + gap
+    const scrollAmount = 320; 
     const newScrollLeft =
       scrollContainerRef.current.scrollLeft +
       (direction === "left" ? -scrollAmount : scrollAmount);

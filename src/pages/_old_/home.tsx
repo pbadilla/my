@@ -1,6 +1,6 @@
-import Header from "@components/common/header";
-import Footer from "@components/common/footer";
 import Carrousel from "@components/carousel";
+import Footer from "@components/common/footer";
+import Header from "@components/common/header";
 
 const home = () => {
   return (

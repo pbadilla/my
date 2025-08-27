@@ -20,13 +20,13 @@ export const adaptMovie = (apiMovie: ApiMovie): Movie => {
     id: String(apiMovie.id),
     title: apiMovie.title || apiMovie.original_title || "Untitled",
     description: apiMovie.overview || "",
-    category: undefined, // you can set this if your API provides it
+    category: undefined, 
     genres: apiMovie.genres?.map((g) => g.name) ?? [],
     posterUrl: apiMovie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${apiMovie.poster_path}`
+      ? `https:
       : "/placeholder.svg",
     backdrop_path: apiMovie.backdrop_path
-      ? `https://image.tmdb.org/t/p/w780${apiMovie.backdrop_path}`
+      ? `https:
       : null,
     rating: apiMovie.vote_average ?? 0,
     year: apiMovie.release_date

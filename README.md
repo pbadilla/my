@@ -1,24 +1,31 @@
 
 # myTheresa - Carrousel Movies, Card and Wishlist
 
-- Carrousel with 3 differents types of movies. Details and Wishlist.
+- Carrousel with 3 differents types of Movies. Details and WishlList.
 
 ## Features
 
 - Carrousel fetching data for different types of movie
 - Details of the selected movie
-- Possibility to add into a Wishlist
-- Wishlist
-
+- Add into a Wishlist and delete items from it
 
 ## Appendix
 
-made with React[18], SCSS, Axios, Redux-TLK, Vite, pnpm
+made with React[18], Vite, SCSS, Axios, Zustand, React-Query, pnpm
 
 ## Other libraries
 
-react-carrousel, react-router, tostify
+React-router, react-tostify
 
+## Tests
+
+### Unit Test
+
+Jest, react-testing-library, vitest
+
+### E2E
+
+ Playwright
 
 ## How to us it
 
@@ -39,7 +46,9 @@ Then, install all the dependencies (with pnpm[better option] or yarn )
 ```bash
   pnpm install
 ```
+
 or
+
 ```bash
   yarn install
 ```
@@ -52,8 +61,8 @@ And the start the project
 
 ## Running Tests
 
-In order to run the tests, you need to install the following packages: 
- 
+In order to run the tests, you need to install the following packages:
+
  ```bash
   npm install -g playwright
   npm install -g @playwright/test
@@ -69,12 +78,11 @@ To run tests, run the following command
 
 ## SSR
 
-I'm triying to use Vite to create a SSR for my project, so I'have write a `appServer.tsx` file in the `src/pages` folder but is not working yet.
+Using VITE is not possible to do a SSR although I've create a AppServer file to introduce it to the project. (It could a better idea use another tool like NEXT for example)
 
 ## Authors
 
 - [@pbadilla](https://www.github.com/pbadilla)
-
 
 ## API Reference
 
@@ -84,14 +92,12 @@ I'm triying to use Vite to create a SSR for my project, so I'have write a `appSe
 
 ## Optimizations
 
-Possibly using another state manager as Zustand or TanTanQuery could better performance and cache
+Using a i18n tool to create different languages
 
 ## TODO
 
-- Use a DS to better UX experience
 - Search movies feature
-- Most use cases for testing e2e tests
-- Try another unit test platform as BUN to check the performance
+- Language selector and i18n
 
 ## Badges
 

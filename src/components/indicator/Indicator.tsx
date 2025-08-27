@@ -1,4 +1,5 @@
 import React from "react";
+
 import "@styles/Indicator.scss";
 
 interface Movie {
@@ -20,7 +21,7 @@ const Indicator: React.FC<IndicatorProps> = ({ activeIndex, content, clickFuncti
           <a
             className={index === activeIndex ? "indicator indicator--active" : "indicator"}
             title={movie.original_title}
-            onClick={() => clickFunction(index)} // Pass the index to the click function
+            onClick={() => clickFunction(index)} 
           />
         </li>
       ))}

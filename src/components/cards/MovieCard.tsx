@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 
-import type { MovieCardProps } from "../../types/movies";
-
 import Card from "@components/common/Card";
 
-import { getTmdbImage } from "@utils/tmdb";
-import { getRatingClass } from "@utils/getRatingColors";
-
 import "../../styles/movieCard.scss";
+import type { MovieCardProps } from "../../types/movies";
 import { getCategoryClass } from "@utils/getCategories";
+import { getRatingClass } from "@utils/getRatingColors";
+import { getTmdbImage } from "@utils/tmdb";
 
 export const MovieCard = ({ movie, type }: MovieCardProps) => {
   return (
@@ -27,7 +25,7 @@ export const MovieCard = ({ movie, type }: MovieCardProps) => {
           />
           <div className="movie-card__overlay" />
 
-          {/* Rating badge */}
+          {}
           <div className={`movie-card__rating ${getRatingClass(movie.rating)}`}>
             <Star className="icon-star" />
             <span>{movie.rating.toFixed(1)}</span>

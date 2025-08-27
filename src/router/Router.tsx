@@ -1,10 +1,9 @@
+import { createBrowserRouter } from "react-router-dom";
+
+import ErrorPage from "@pages/Error";
 import Home from "@pages/Home";
 import Movie from "@pages/Movie";
-import ErrorPage from "@pages/Error";
-
 import WishList from "@pages/WishList";
-
-import { createBrowserRouter } from "react-router-dom";
 
 export const Router = createBrowserRouter([
   {

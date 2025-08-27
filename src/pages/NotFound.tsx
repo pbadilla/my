@@ -1,6 +1,8 @@
 import { Link, useRouteError } from "react-router-dom";
-import img from "@images/error404.jpg";
+
 import Layout from "@components/layout/Layout";
+
+import img from "@images/error404.jpg";
 
 interface RouteError {
   status?: number;

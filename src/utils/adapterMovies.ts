@@ -1,3 +1,4 @@
+// biome-ignore lint/style/useImportType: <explanation>
 import { Movie } from "@types/movies";
 
 export const adaptMovie = (apiMovie: Movie): Movie => ({

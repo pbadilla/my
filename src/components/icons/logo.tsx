@@ -1,15 +1,8 @@
 import React from 'react';
 
-// interface IconProps {
-//   name: string;  // Name of the icon (could be an SVG ID or a font class name)
-//   size?: number; // Size of the icon in pixels
-//   color?: string; // Color of the icon
-//   className?: string; // Any additional classes
-// }
-
 const Logo: React.FC = () => {
   return (
-    <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+    <svg version="1.0" id="Layer_1" xmlns="http:
     viewBox="0 0 844 570">
       <path d="M657,242c10.9-3.1,22.9,1.4,29.8,10.2c-1.1,1.1-2.2,2.2-3.2,3.2c-4.7-5.5-10.7-11.2-18.5-10.7c-7.3-0.6-14.5,6.3-13.2,13.8
         c0.4,4.4,3.4,7.8,6.7,10.5c8.6,7,19.3,11.1,27.7,18.6c7.8,6.9,8.7,19,4.6,28.2c-3.8,8.3-13,13.5-22,13.1

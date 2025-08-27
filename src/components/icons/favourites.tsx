@@ -2,7 +2,7 @@ import React from 'react';
 
 const Favourites: React.FC = () => {
   return (
-    <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  
+    <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http:
       width="10px" height="10px" viewBox="0 0 47.05 47.05"
       >
     <g>

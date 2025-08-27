@@ -1,6 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+
+import axios from "axios";
 import { fetchApiData, fetchApiSuccess, fetchApiFailure } from "../store/apiSlice";
 
 export const useFetchData = <T,>(url:string) => {

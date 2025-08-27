@@ -1,5 +1,15 @@
+import "react-toastify/dist/ReactToastify.css";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import { queryClient } from "@store/queryClient";
 import { useWishlist } from "@store/wishList";
+
+import "@styles/index.scss";
+
+import { Router } from "./router/Router";
+import { ThemeProvider } from "../src/context/ThemeContext";
 
 if (typeof window !== "undefined") {
   (window as any).__setWishlistForTests = (movies: any[]) => {
@@ -7,17 +17,17 @@ if (typeof window !== "undefined") {
   };
 }
 
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@store/queryClient";
 
-import { ThemeProvider } from "../src/context/ThemeContext";
 
-import { Router } from "./router/Router";
 
-import { ToastContainer } from "react-toastify";
 
-import "react-toastify/dist/ReactToastify.css";
-import "@styles/index.scss";
+
+
+
+
+
+
+
 
 const App = () => {
   return (

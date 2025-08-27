@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import defaultImage from '@images/default_image.jpg';
 
 import "@styles/image.scss";
+
+import defaultImage from '@images/default_image.jpg';
 
 const placeHolder =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=";
 
-// const defaultImageUrl = 'https://source.unsplash.com/random';
+
 
 interface LazyImageProps {
   src: string;
@@ -24,7 +25,7 @@ const Image: React.FC<LazyImageProps> = ({ src, alt, isMovie }) => {
 
   const onError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
     event.currentTarget.classList.add("has-error");
-    setImageSrc(defaultImage); // Set default image on error
+    setImageSrc(defaultImage); 
   };
 
   useEffect(() => {

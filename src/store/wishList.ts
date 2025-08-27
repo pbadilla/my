@@ -1,6 +1,6 @@
+import type { Movie } from "../types/movies";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Movie } from "../types/movies";
 
 type WishlistState = {
   items: Movie[];
@@ -25,7 +25,7 @@ export const useWishlist = create<WishlistState>()(
   )
 );
 
-// For Playwright tests
+
 export const __setWishlistForTests = (movies: Movie[]) => {
   useWishlist.setState({ items: movies });
 };

@@ -1,24 +1,23 @@
+import { FaStar, FaCalendar, FaClock, FaHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-toastify";
-
-import { fetchMovie } from "../services/fetchMovies";
-import type { Movie } from "../types/movies";
 
 import { useWishlist } from "@store/wishList";
-import { getTmdbImage } from "@utils/tmdb";
 
-import Layout from "@components/layout/Layout";
-import Button from "@components/common/Button";
-import Card from "@components/common/Card";
-
+import ErrorPage from "@pages/Error";
 import Loading from "@pages/Loading";
 import NotFound from "@pages/NotFound";
-import ErrorPage from "@pages/Error";
 
-import { FaStar, FaCalendar, FaClock, FaHeart } from "react-icons/fa";
+import Button from "@components/common/Button";
+import Card from "@components/common/Card";
+import Layout from "@components/layout/Layout";
 
 import "@styles/movieDetails.scss";
+
+import type { Movie } from "../types/movies";
+import { fetchMovie } from "../services/fetchMovies";
+import { getTmdbImage } from "@utils/tmdb";
 
 const MoviePage = () => {
   const { id: idMovie } = useParams<{ id: string }>();
@@ -60,7 +59,7 @@ const MoviePage = () => {
       <div className="movie-details" data-testid="movie-page">
         <div className="container">
           <div className="grid">
-            {/* Poster */}
+            {}
             <div className="poster" data-testid="movie-poster">
               <Card>
                 <img
@@ -70,7 +69,7 @@ const MoviePage = () => {
               </Card>
             </div>
 
-            {/* Details */}
+            {}
             <div className="details" data-testid="movie-details">
               <div>
                 <div className="category" data-testid="movie-category">
@@ -96,13 +95,13 @@ const MoviePage = () => {
                 </div>
               </div>
 
-              {/* Description */}
+              {}
               <div className="description" data-testid="movie-description">
                 <h2 className="title">Description</h2>
                 <p>{movieData.overview}</p>
               </div>
 
-              {/* Wishlist button */}
+              {}
               <div className="wishlist-button">
                 <Button
                   dataTestId="wishlist-button"

@@ -1,6 +1,7 @@
-import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from "react-redux";
 import { Route, Routes } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom/server';
+
 import store from '@store/store';
 
 import { Home, Movie, Error, WishList } from './pages';

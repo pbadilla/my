@@ -1,7 +1,8 @@
+import { useMoviesStore } from "@store/moviesStore";
+
 import axios from "axios";
 import type { Movie, MoviesResponse } from "../types/movies";
 import { adaptMovie } from "@utils/adapterMovies";
-import { useMoviesStore } from "@store/moviesStore";
 
 const API_KEY = '7006edd4690fd5f45e7b5cb6b1561357';
 

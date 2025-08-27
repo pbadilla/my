@@ -1,16 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import { useWishlist } from "@store/wishList";
 
 import NoPage from "@pages/NoPage";
 
-import Layout from "@components/layout/Layout";
 import Button from "@components/common/Button";
+import Layout from "@components/layout/Layout";
 import { MovieCard } from "@components/cards/MovieCard";
-
-import { FaTrash } from "react-icons/fa";
 
 import "@styles/wishList.scss";
 
